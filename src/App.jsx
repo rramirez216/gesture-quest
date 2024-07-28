@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Main>
-      <UploadInput handleImage={handleImage} />
+      <FileInput handleImage={handleImage} />
       {image.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
@@ -32,7 +32,7 @@ function App() {
   )
 }
 
-function UploadInput({ handleImage }) {
+function FileInput({ handleImage }) {
   return (
     <>
       <input
