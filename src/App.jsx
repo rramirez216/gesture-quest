@@ -10,13 +10,7 @@ function App() {
       let url = URL.createObjectURL(obj)
       arr = [...arr, url]
     }
-    // const urlList = arr.map((obj) => {
-    //   return URL.createObjectURL(obj)
-    // })
-    // let arr = []
-    // arr.splice(0, 0, url)
-    // setImage([...arr])
-    // console.log(urlList)
+    setImage([...arr])
     console.log(arr)
   }
 
@@ -31,7 +25,9 @@ function App() {
   return (
     <Main>
       <UploadInput handleImage={handleImage} />
-      {/* <img src={image || ''} alt='' /> */}
+      {image.map((item) => (
+        <Image src={item} alt='' key={crypto.randomUUID()} />
+      ))}
     </Main>
   )
 }
