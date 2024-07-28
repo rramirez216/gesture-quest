@@ -1,0 +1,61 @@
+import React from 'react'
+import { styled } from '@linaria/react'
+
+function App() {
+  const [image, setImage] = React.useState([])
+
+  const handleImage = (event) => {
+    let arr = []
+    for (const obj of event.target.files) {
+      let url = URL.createObjectURL(obj)
+      arr = [...arr, url]
+    }
+    // const urlList = arr.map((obj) => {
+    //   return URL.createObjectURL(obj)
+    // })
+    // let arr = []
+    // arr.splice(0, 0, url)
+    // setImage([...arr])
+    // console.log(urlList)
+    console.log(arr)
+  }
+
+  React.useEffect(() => {
+    return () => {
+      if (image.length > 0) {
+        URL.revokeObjectURL(image)
+      }
+    }
+  }, [image])
+
+  return (
+    <Main>
+      <UploadInput handleImage={handleImage} />
+      {/* <img src={image || ''} alt='' /> */}
+    </Main>
+  )
+}
+
+function UploadInput({ handleImage }) {
+  return (
+    <>
+      <input
+        type='file'
+        name='file'
+        id='file'
+        accept='image/*'
+        onChange={(event) => handleImage(event)}
+        multiple
+      />
+    </>
+  )
+}
+
+const Main = styled.main`
+  max-height: 100%;
+`
+const Image = styled.img`
+  width: 100px;
+  height: 100px;
+`
+export default App
