@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from '@linaria/react'
 
 function App() {
-  const [image, setImage] = React.useState([])
+  const [imageList, setImageList] = React.useState([])
 
   const handleImage = (event) => {
     let arr = []
@@ -10,22 +10,22 @@ function App() {
       let url = URL.createObjectURL(obj)
       arr = [...arr, url]
     }
-    setImage([...arr])
+    setImageList([...arr])
     console.log(arr)
   }
 
   React.useEffect(() => {
     return () => {
-      if (image.length > 0) {
+      if (imageList.length > 0) {
         URL.revokeObjectURL(image)
       }
     }
-  }, [image])
+  }, [imageList])
 
   return (
     <Main>
       <FileInput handleImage={handleImage} />
-      {image.map((item) => (
+      {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
     </Main>
