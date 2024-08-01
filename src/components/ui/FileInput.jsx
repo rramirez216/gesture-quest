@@ -1,3 +1,6 @@
+import React from 'react'
+import { styled } from '@linaria/react'
+
 function FileInput({ handleImage }) {
   return (
     <>
@@ -12,3 +15,5 @@ function FileInput({ handleImage }) {
     </>
   )
 }
+
+export default FileInput
