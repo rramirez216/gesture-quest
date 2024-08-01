@@ -1,8 +1,11 @@
 import React from 'react'
 import { styled } from '@linaria/react'
+import FileInput from '../components/ui/FileInput'
+import Form from '../components/ui/Form'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
+  const [intervalTime, setIntervalTime] = React.useState('1 min')
 
   const handleImage = (event) => {
     let arr = []
@@ -22,9 +25,14 @@ function Home() {
     }
   }, [imageList])
 
+  React.useEffect(() => {
+    console.log(intervalTime)
+    return
+  }, [intervalTime])
+
   return (
     <>
-      {' '}
+      <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
       <FileInput handleImage={handleImage} />
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
