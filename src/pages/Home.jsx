@@ -27,7 +27,6 @@ function Home() {
 
   React.useEffect(() => {
     console.log(intervalTime)
-    return
   }, [intervalTime])
 
   return (
@@ -37,6 +36,7 @@ function Home() {
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
+      <div>{intervalTime}</div>
     </>
   )
 }
