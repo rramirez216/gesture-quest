@@ -2,10 +2,12 @@ import React from 'react'
 import { styled } from '@linaria/react'
 import FileInput from '../components/ui/FileInput'
 import Form from '../components/ui/Form'
+import StartButton from '../components/ui/StartButton'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
   const [intervalTime, setIntervalTime] = React.useState('1 min')
+  const [sliderDisplay, setSliderDisplay] = React.useState(false)
 
   const handleImage = (event) => {
     let arr = []
@@ -15,6 +17,14 @@ function Home() {
     }
     setImageList([...arr])
     console.log(arr)
+  }
+
+  const handleSliderDisplay = () => {
+    if (sliderDisplay) {
+      setSliderDisplay(false)
+    } else {
+      setSliderDisplay(true)
+    }
   }
 
   React.useEffect(() => {
@@ -36,7 +46,10 @@ function Home() {
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
-      <div>{intervalTime}</div>
+      <div>
+        {intervalTime} - {`${sliderDisplay}`}
+      </div>
+      <StartButton handleSliderDisplay={handleSliderDisplay} />
     </>
   )
 }
