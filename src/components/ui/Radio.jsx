@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Radio({ key, time, labelValue, intervalTime, setIntervalTime }) {
+function Radio({ time, labelValue, intervalTime, setIntervalTime }) {
   return (
-    <div key={key}>
+    <div>
       <input
         type='radio'
         name='interval-times'
