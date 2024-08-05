@@ -3,7 +3,7 @@ import Radio from './Radio'
 import { constants } from '../../data/constants'
 
 function Form({ intervalTime, setIntervalTime }) {
-  const { radioData } = constants
+  let { radioData } = constants
   return (
     <form>
       <fieldset>
