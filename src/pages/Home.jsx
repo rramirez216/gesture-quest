@@ -2,7 +2,8 @@ import React from 'react'
 import { styled } from '@linaria/react'
 import FileInput from '../components/ui/FileInput'
 import Form from '../components/ui/Form'
-import StartButton from '../components/ui/StartButton'
+import Button from '../components/ui/Button'
+import Modal from '../components/slider/Modal'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
@@ -22,8 +23,10 @@ function Home() {
   const handleSliderDisplay = () => {
     if (sliderDisplay) {
       setSliderDisplay(false)
+      console.log(false)
     } else {
       setSliderDisplay(true)
+      console.log(true)
     }
   }
 
@@ -49,7 +52,11 @@ function Home() {
       <div>
         {intervalTime} - {`${sliderDisplay}`}
       </div>
-      <StartButton handleSliderDisplay={handleSliderDisplay} />
+      <Button handleSliderDisplay={handleSliderDisplay} />
+      <Modal
+        sliderDisplay={sliderDisplay}
+        handleSliderDisplay={handleSliderDisplay}
+      />
     </>
   )
 }
