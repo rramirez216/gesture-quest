@@ -12,5 +12,7 @@ function App() {
 
 const Main = styled.main`
   max-height: 100%;
+  height: 100%;
+  position: relative;
 `
 export default App
