@@ -1,19 +1,21 @@
 import React from 'react'
 import { styled } from '@linaria/react'
-import SliderButton from './SliderButton'
+import Button from '../ui/Button'
 
 function Modal({ sliderDisplay, handleSliderDisplay }) {
   let isSliderOn = sliderDisplay === true ? 'flex' : 'none'
   return (
     <Wrapper display={isSliderOn}>
       <ImageWrapper></ImageWrapper>
-      <SliderButton handleSliderDisplay={handleSliderDisplay} />
+      <ButtonWrapper>
+        <Button handleSliderDisplay={handleSliderDisplay} />
+      </ButtonWrapper>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
-  display: ${(props) => props.isSliderOn};
+  display: ${(props) => props.display};
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
@@ -28,6 +30,9 @@ const ImageWrapper = styled.div`
   width: 50%;
   height: 100%;
   background-color: hsl(130, 55%, 79%);
+`
+const ButtonWrapper = styled.div`
+  transform: translateY(-200%);
 `
 
 export default Modal
