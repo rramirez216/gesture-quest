@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@linaria/react'
+import Button from '../ui/Button'
 
 function Timer({ intervalTime, sliderDisplay }) {
   const [minutes, setMinutes] = React.useState(0)
@@ -8,6 +9,7 @@ function Timer({ intervalTime, sliderDisplay }) {
   let secondsOrMinutes = intervalTime.slice(-3)
 
   let countdown
+  let intervalID
 
   if (secondsOrMinutes == 'min' || secondsOrMinutes == 'ins') {
     countdown = extractNumber(intervalTime) * 60 * 1000
@@ -15,37 +17,42 @@ function Timer({ intervalTime, sliderDisplay }) {
     countdown = extractNumber(intervalTime) * 1000
   }
 
-  React.useEffect(() => {
-    if (sliderDisplay) {
-      const intervalID = setInterval(startCountdown, 1000)
-      console.log('its running!')
+  // React.useEffect(() => {
+  //   if (sliderDisplay) {
 
-      return () => {
-        if (!minutes && seconds < 0) {
-          console.log('all clear!')
-          clearInterval(intervalID)
-        }
-      }
-    }
-  }, [sliderDisplay])
+  //     return () => clearInterval(intervalID)
+  //   }
+  // }, [sliderDisplay])
+
+  function clearId() {
+    clearInterval(intervalID)
+  }
+
+  function handleClick() {
+    intervalID = setInterval(startCountdown, 1000)
+  }
 
   function startCountdown() {
     let currentTimer = countdown
-    let mins = Math.floor((currentTimer % 360000) / 60000)
+    let mins = Math.floor((currentTimer % 3600000) / 60000)
     let secs = Math.floor((currentTimer % 60000) / 1000)
 
     countdown -= 1000
     setMinutes(mins)
     setSeconds(secs)
+    if (!mins && !secs) {
+      clearId()
+    }
   }
 
   return (
     <div>
-      <p>{`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`}</p>
-      {/* <button type='button' onClick={() => handleClick()}>
-
-        click me
-      </button> */}
+      <p>
+        {minutes || seconds
+          ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+          : ''}
+      </p>
+      <Button handleButton={handleClick} />
     </div>
   )
 }
