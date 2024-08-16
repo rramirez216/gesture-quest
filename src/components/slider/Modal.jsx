@@ -1,14 +1,16 @@
 import React from 'react'
 import { styled } from '@linaria/react'
 import Button from '../ui/Button'
+import Timer from './Timer'
 
-function Modal({ sliderDisplay, handleSliderDisplay }) {
+function Modal({ sliderDisplay, handleSliderDisplay, intervalTime }) {
   let isSliderOn = sliderDisplay === true ? 'flex' : 'none'
   return (
     <Wrapper display={isSliderOn}>
       <ImageWrapper></ImageWrapper>
       <ButtonWrapper>
         <Button handleSliderDisplay={handleSliderDisplay} />
+        {sliderDisplay && <Timer intervalTime={intervalTime} />}
       </ButtonWrapper>
     </Wrapper>
   )
@@ -32,6 +34,8 @@ const ImageWrapper = styled.div`
   background-color: hsl(130, 55%, 79%);
 `
 const ButtonWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
   transform: translateY(-200%);
 `
 
