@@ -1,12 +1,10 @@
 import React from 'react'
 import { styled } from '@linaria/react'
-import Button from '../ui/Button'
 
 function Timer({ intervalTime, sliderDisplay }) {
-  const [minutes, setMinutes] = React.useState(0)
-  const [seconds, setSeconds] = React.useState(0)
+  const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
 
-  let secondsOrMinutes = intervalTime.slice(-3)
+  const secondsOrMinutes = intervalTime.slice(-3)
 
   let countdown
   let intervalID
@@ -16,44 +14,34 @@ function Timer({ intervalTime, sliderDisplay }) {
   } else {
     countdown = extractNumber(intervalTime) * 1000
   }
+  React.useEffect(() => {
+    intervalID = setInterval(() => {
+      const currentTimer = countdown
+      const minutes = Math.floor((currentTimer % 3600000) / 60000)
+      const seconds = Math.floor((currentTimer % 60000) / 1000)
+      console.log('tick')
 
-  // React.useEffect(() => {
-  //   if (sliderDisplay) {
+      countdown -= 1000
+      setTime({ minutes, seconds })
 
-  //     return () => clearInterval(intervalID)
-  //   }
-  // }, [sliderDisplay])
+      if (!minutes && !seconds) {
+        clearInterval(intervalID)
+      }
+    }, 1000)
 
-  function clearId() {
-    clearInterval(intervalID)
-  }
+    return () => clearInterval(intervalID)
+  }, [])
 
-  function handleClick() {
-    intervalID = setInterval(startCountdown, 1000)
-  }
-
-  function startCountdown() {
-    let currentTimer = countdown
-    let mins = Math.floor((currentTimer % 3600000) / 60000)
-    let secs = Math.floor((currentTimer % 60000) / 1000)
-
-    countdown -= 1000
-    setMinutes(mins)
-    setSeconds(secs)
-    if (!mins && !secs) {
-      clearId()
-    }
-  }
+  const { minutes, seconds } = time
 
   return (
-    <div>
+    <TimerWrapper>
       <p>
         {minutes || seconds
           ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-          : ''}
+          : '0:00'}
       </p>
-      <Button handleButton={handleClick} />
-    </div>
+    </TimerWrapper>
   )
 }
 
@@ -63,7 +51,9 @@ function extractNumber(params) {
     : Number(params.slice(0, 2))
 }
 
-export default Timer
+const TimerWrapper = styled.div`
+  padding: 4px;
+  background-color: aliceblue;
+`
 
-// TODO: what is a cleanup function? why and when is it needed?
-// TODO: what are effects? why and when to use them?
+export default Timer
