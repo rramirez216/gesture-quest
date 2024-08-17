@@ -2,9 +2,8 @@ import React from 'react'
 import { styled } from '@linaria/react'
 import FileInput from '../components/ui/FileInput'
 import Form from '../components/ui/Form'
-// import Button from '../components/ui/Button'
-// import Modal from '../components/slider/Modal'
-import Timer from '../components/slider/Timer'
+import Button from '../components/ui/Button'
+import Modal from '../components/slider/Modal'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
@@ -44,12 +43,12 @@ function Home() {
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
-      {/* <Button handleButton={handleSliderDisplay} /> */}
-      <Timer intervalTime={intervalTime} sliderDisplay={sliderDisplay} />
-      {/* <Modal
+      <Button handleButton={handleSliderDisplay} />
+      <Modal
         sliderDisplay={sliderDisplay}
         handleSliderDisplay={handleSliderDisplay}
-      /> */}
+        intervalTime={intervalTime}
+      />
     </>
   )
 }
