@@ -7,7 +7,7 @@ import Modal from '../components/slider/Modal'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
-  const [intervalTime, setIntervalTime] = React.useState('1 min')
+  const [intervalTime, setIntervalTime] = React.useState('30 secs')
   const [sliderDisplay, setSliderDisplay] = React.useState(false)
 
   const handleImage = (event) => {
@@ -23,10 +23,8 @@ function Home() {
   const handleSliderDisplay = () => {
     if (sliderDisplay) {
       setSliderDisplay(false)
-      console.log(false)
     } else {
       setSliderDisplay(true)
-      console.log(true)
     }
   }
 
@@ -38,10 +36,6 @@ function Home() {
     }
   }, [imageList])
 
-  React.useEffect(() => {
-    console.log(intervalTime)
-  }, [intervalTime])
-
   return (
     <>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
@@ -49,13 +43,11 @@ function Home() {
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
-      <div>
-        {intervalTime} - {`${sliderDisplay}`}
-      </div>
-      <Button handleSliderDisplay={handleSliderDisplay} />
+      <Button handleButton={handleSliderDisplay} />
       <Modal
         sliderDisplay={sliderDisplay}
         handleSliderDisplay={handleSliderDisplay}
+        intervalTime={intervalTime}
       />
     </>
   )

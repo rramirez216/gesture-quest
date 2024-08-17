@@ -1,10 +1,10 @@
 import React from 'react'
 import { styled } from '@linaria/react'
 
-function Button({ handleSliderDisplay }) {
+function Button({ handleButton }) {
   return (
     <>
-      <Wrapper type='button' onClick={handleSliderDisplay}>
+      <Wrapper type='button' onClick={handleButton}>
         start
       </Wrapper>
     </>
