@@ -1,10 +1,10 @@
 const constants = {
   radioData: [
-    { id: 1, value: '10 mins', labelValue: 'interval-10-min' },
-    { id: 2, value: '5 mins', labelValue: 'interval-5-min' },
-    { id: 3, value: '2 mins', labelValue: 'interval-2-min' },
-    { id: 4, value: '1 min', labelValue: 'interval-1-min' },
-    { id: 5, value: '30 secs', labelValue: 'interval-30-sec' },
+    { id: 1, radioStr: 'mins', radioNum: 10, labelID: 'interval-10-min' },
+    { id: 2, radioStr: 'mins', radioNum: 5, labelID: 'interval-5-min' },
+    { id: 3, radioStr: 'mins', radioNum: 2, labelID: 'interval-2-min' },
+    { id: 4, radioStr: 'min', radioNum: 1, labelID: 'interval-1-min' },
+    { id: 5, radioStr: 'secs', radioNum: 30, labelID: 'interval-30-sec' },
   ],
 }
 
