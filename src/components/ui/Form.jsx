@@ -11,8 +11,9 @@ function Form({ intervalTime, setIntervalTime }) {
         {radioData.map((item) => (
           <Radio
             key={item.id}
-            time={item.value}
-            labeValue={item.labelValue}
+            radioStr={item.radioStr}
+            radioNum={item.radioNum}
+            labelID={item.labelID}
             intervalTime={intervalTime}
             setIntervalTime={setIntervalTime}
           />
