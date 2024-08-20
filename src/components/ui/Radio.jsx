@@ -1,17 +1,25 @@
 import React from 'react'
 
-function Radio({ time, labelValue, intervalTime, setIntervalTime }) {
+function Radio({
+  radioStr,
+  radioNum: num,
+  labelID,
+  intervalTime,
+  setIntervalTime,
+}) {
   return (
     <div>
       <input
         type='radio'
         name='interval-times'
-        id={labelValue}
-        value={time}
-        checked={intervalTime === time}
-        onChange={(e) => setIntervalTime(e.target.value)}
+        id={labelID}
+        value={num}
+        checked={intervalTime.radioNum == num}
+        onChange={(e) => {
+          setIntervalTime({ radioNum: Number(e.target.value), radioStr })
+        }}
       />
-      <label htmlFor={labelValue}>{time}</label>
+      <label htmlFor={labelID}>{num + ' ' + radioStr}</label>
     </div>
   )
 }
