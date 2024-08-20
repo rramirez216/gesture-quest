@@ -7,7 +7,10 @@ import Modal from '../components/slider/Modal'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
-  const [intervalTime, setIntervalTime] = React.useState('30 secs')
+  const [intervalTime, setIntervalTime] = React.useState({
+    radioNum: 30,
+    radioStr: 'secs',
+  })
   const [sliderDisplay, setSliderDisplay] = React.useState(false)
 
   const handleImage = (event) => {
