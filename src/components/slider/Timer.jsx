@@ -3,16 +3,15 @@ import { styled } from '@linaria/react'
 
 function Timer({ intervalTime, sliderDisplay }) {
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
-
-  const secondsOrMinutes = intervalTime.slice(-3)
+  const { radioNum, radioStr } = intervalTime
 
   let countdown
   let intervalID
 
-  if (secondsOrMinutes == 'min' || secondsOrMinutes == 'ins') {
-    countdown = extractNumber(intervalTime) * 60 * 1000
+  if (radioStr == 'min' || radioStr == 'mins') {
+    countdown = radioNum * 60 * 1000
   } else {
-    countdown = extractNumber(intervalTime) * 1000
+    countdown = radioNum * 1000
   }
   React.useEffect(() => {
     intervalID = setInterval(() => {
@@ -45,15 +44,8 @@ function Timer({ intervalTime, sliderDisplay }) {
   )
 }
 
-function extractNumber(params) {
-  return params.length < 7
-    ? Number(params.slice(0, 1))
-    : Number(params.slice(0, 2))
-}
-
 const TimerWrapper = styled.div`
   padding: 4px;
   background-color: aliceblue;
 `
-
 export default Timer
