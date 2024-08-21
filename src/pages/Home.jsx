@@ -46,7 +46,7 @@ function Home() {
       {imageList.map((item) => (
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
-      <Button handleButton={handleSliderDisplay} />
+      <Button handleButton={handleSliderDisplay} children={'Start'} />
       <Modal
         sliderDisplay={sliderDisplay}
         handleSliderDisplay={handleSliderDisplay}
