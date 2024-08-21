@@ -9,7 +9,7 @@ function Modal({ sliderDisplay, handleSliderDisplay, intervalTime }) {
     <Wrapper display={isSliderOn}>
       <ImageWrapper></ImageWrapper>
       <ButtonWrapper>
-        <Button handleSliderDisplay={handleSliderDisplay} />
+        <Button handleButton={handleSliderDisplay} children={'End Session'} />
         {sliderDisplay && <Timer intervalTime={intervalTime} />}
       </ButtonWrapper>
     </Wrapper>
