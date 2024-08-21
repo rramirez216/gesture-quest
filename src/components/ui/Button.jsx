@@ -1,11 +1,11 @@
 import React from 'react'
 import { styled } from '@linaria/react'
 
-function Button({ handleButton }) {
+function Button({ handleButton, children }) {
   return (
     <>
       <Wrapper type='button' onClick={handleButton}>
-        start
+        {children}
       </Wrapper>
     </>
   )
