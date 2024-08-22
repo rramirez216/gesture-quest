@@ -51,6 +51,7 @@ function Home() {
         sliderDisplay={sliderDisplay}
         handleSliderDisplay={handleSliderDisplay}
         intervalTime={intervalTime}
+        imageList={imageList}
       />
     </>
   )
