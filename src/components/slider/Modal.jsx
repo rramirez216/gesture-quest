@@ -2,15 +2,42 @@ import React from 'react'
 import { styled } from '@linaria/react'
 import Button from '../ui/Button'
 import Timer from './Timer'
+import Image from './Image'
 
-function Modal({ sliderDisplay, handleSliderDisplay, intervalTime }) {
-  let isSliderOn = sliderDisplay === true ? 'flex' : 'none'
+function Modal({
+  sliderDisplay,
+  handleSliderDisplay,
+  intervalTime,
+  imageList,
+}) {
+  const [imageIndex, setImageIndex] = React.useState(0)
+
+  const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
+
+  let timer =
+    imageList.length > 0 && sliderDisplay == true ? (
+      <Timer
+        intervalTime={intervalTime}
+        imageIndex={imageIndex}
+        setImageIndex={setImageIndex}
+        imageList={imageList}
+      />
+    ) : (
+      <Timer intervalTime={intervalTime} imageList={imageList} />
+    )
+
+  console.log(timer)
+
   return (
     <Wrapper display={isSliderOn}>
-      <ImageWrapper></ImageWrapper>
+      <ImageWrapper>
+        {imageList.length > 0 && (
+          <Image src={imageList[imageIndex]} alt='file' />
+        )}
+      </ImageWrapper>
       <ButtonWrapper>
         <Button handleButton={handleSliderDisplay} children={'End Session'} />
-        {sliderDisplay && <Timer intervalTime={intervalTime} />}
+        {timer}
       </ButtonWrapper>
     </Wrapper>
   )
@@ -27,9 +54,10 @@ const Wrapper = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 24px 48px;
 `
 const ImageWrapper = styled.div`
-  width: 50%;
+  width: 100%;
   height: 100%;
   background-color: hsl(130, 55%, 79%);
 `
