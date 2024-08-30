@@ -35,6 +35,7 @@ function Home() {
     return () => {
       if (imageList.length > 0) {
         URL.revokeObjectURL(imageList)
+        console.log('cleared!')
       }
     }
   }, [imageList])
@@ -47,12 +48,14 @@ function Home() {
         <Image src={item} alt='' key={crypto.randomUUID()} />
       ))}
       <Button handleButton={handleSliderDisplay} children={'Start'} />
-      <Modal
-        sliderDisplay={sliderDisplay}
-        handleSliderDisplay={handleSliderDisplay}
-        intervalTime={intervalTime}
-        imageList={imageList}
-      />
+      {sliderDisplay && (
+        <Modal
+          sliderDisplay={sliderDisplay}
+          handleSliderDisplay={handleSliderDisplay}
+          intervalTime={intervalTime}
+          imageList={imageList}
+        />
+      )}
     </>
   )
 }
