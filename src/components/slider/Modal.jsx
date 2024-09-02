@@ -38,6 +38,7 @@ function Modal({
       <ButtonWrapper>
         <Button handleButton={handleSliderDisplay} children={'End Session'} />
         {timer}
+        <Button />
       </ButtonWrapper>
     </Wrapper>
   )
