@@ -11,6 +11,7 @@ function Modal({
   imageList,
 }) {
   const [imageIndex, setImageIndex] = React.useState(0)
+  const [pause, setPause] = React.useState(false)
 
   const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
 
@@ -21,12 +22,18 @@ function Modal({
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
         imageList={imageList}
+        pause={pause}
+        setPause={setPause}
       />
     ) : (
       <Timer intervalTime={intervalTime} imageList={imageList} />
     )
 
-  console.log(timer)
+  const handlePause = () => {
+    let toggle = !pause
+    setPause(toggle)
+    console.log(toggle)
+  }
 
   return (
     <Wrapper display={isSliderOn}>
@@ -38,7 +45,7 @@ function Modal({
       <ButtonWrapper>
         <Button handleButton={handleSliderDisplay} children={'End Session'} />
         {timer}
-        <Button />
+        <Button handleButton={handlePause} children={'Pause'} />
       </ButtonWrapper>
     </Wrapper>
   )
