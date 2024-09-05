@@ -43,9 +43,9 @@ function Modal({
         )}
       </ImageWrapper>
       <ButtonWrapper>
-        <Button handleButton={handleSliderDisplay} children={'End Session'} />
-        {timer}
         <Button handleButton={handlePause} children={'Pause'} />
+        {timer}
+        <Button handleButton={handleSliderDisplay} children={'End Session'} />
       </ButtonWrapper>
     </Wrapper>
   )
