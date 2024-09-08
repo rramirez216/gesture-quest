@@ -15,24 +15,31 @@ function Modal({
 
   const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
 
+  function convertToMilliseconds() {
+    const { radioNum, radioStr } = intervalTime
+    if (radioStr == 'min' || radioStr == 'mins') {
+      return radioNum * 60 * 1000
+    } else {
+      return radioNum * 1000
+    }
+  }
+  let timeInMilliseconds = convertToMilliseconds()
+
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
       <Timer
-        intervalTime={intervalTime}
+        timeInMilliseconds={timeInMilliseconds}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
         imageList={imageList}
         pause={pause}
-        setPause={setPause}
       />
     ) : (
-      <Timer intervalTime={intervalTime} imageList={imageList} />
+      <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
     )
 
   const handlePause = () => {
-    let toggle = !pause
-    setPause(toggle)
-    console.log(toggle)
+    setPause(!pause)
   }
 
   return (
@@ -43,7 +50,10 @@ function Modal({
         )}
       </ImageWrapper>
       <ButtonWrapper>
-        <Button handleButton={handlePause} children={'Pause'} />
+        <Button
+          handleButton={handlePause}
+          children={pause ? 'Unpause' : 'Pause'}
+        />
         {timer}
         <Button handleButton={handleSliderDisplay} children={'End Session'} />
       </ButtonWrapper>
