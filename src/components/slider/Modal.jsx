@@ -75,6 +75,9 @@ const Wrapper = styled.div`
   padding: 24px 48px;
 `
 const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: hsl(130, 55%, 79%);
