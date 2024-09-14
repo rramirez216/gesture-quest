@@ -10,7 +10,7 @@ function Image({ src, alt }) {
 }
 
 const Img = styled.img`
-  width: 100%;
+  width: 50%;
 `
 export default Image
 
