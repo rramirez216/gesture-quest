@@ -22,21 +22,20 @@ function Timer({
     let intervalID
     if (imageList.length > 0) {
       intervalID = setInterval(() => {
-        console.log(milliseconds)
-
         let currentTime = calculateCurrentTime(milliseconds)
-        console.log(currentTime)
-
         let { minutes, seconds } = currentTime
-        setMilliseconds((m) => m - 1000)
-        setTime({ minutes, seconds })
 
+        setTime({ minutes, seconds })
+        if ((imageIndex <= imageList.length - 1) && (minutes + seconds)) {
+          setMilliseconds((m) => m - 1000)
+        }
         if (!minutes && !seconds) {
           if (imageIndex < imageList.length - 1) {
             setImageIndex(imageIndex + 1)
             setMilliseconds(timeInMilliseconds)
+          } else {
+            clearInterval(intervalID)
           }
-          clearInterval(intervalID)
         }
       }, 1000)
     }
