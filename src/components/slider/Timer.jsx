@@ -1,42 +1,51 @@
 import React from 'react'
 import { styled } from '@linaria/react'
 
-function Timer({ intervalTime, imageIndex, setImageIndex, imageList }) {
+function Timer({
+  timeInMilliseconds,
+  imageIndex,
+  setImageIndex,
+  imageList,
+  pause,
+}) {
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
-  const { radioNum, radioStr } = intervalTime
+  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
 
-  let countdown
-  let intervalID
-
-  if (radioStr == 'min' || radioStr == 'mins') {
-    countdown = radioNum * 60 * 1000
-  } else {
-    countdown = radioNum * 1000
+  function calculateCurrentTime(input) {
+    return {
+      minutes: Math.floor((input % 3600000) / 60000),
+      seconds: Math.floor((input % 60000) / 1000),
+    }
   }
 
   React.useEffect(() => {
+    let intervalID
     if (imageList.length > 0) {
       intervalID = setInterval(() => {
-        const currentTimer = countdown
-        const minutes = Math.floor((currentTimer % 3600000) / 60000)
-        const seconds = Math.floor((currentTimer % 60000) / 1000)
-        console.log('tick')
+        let currentTime = calculateCurrentTime(milliseconds)
+        let { minutes, seconds } = currentTime
 
-        countdown -= 1000
         setTime({ minutes, seconds })
-
+        if ((imageIndex <= imageList.length - 1) && (minutes + seconds)) {
+          setMilliseconds((m) => m - 1000)
+        }
         if (!minutes && !seconds) {
-          const currentImageIndex = imageIndex
           if (imageIndex < imageList.length - 1) {
-            setImageIndex(currentImageIndex + 1)
+            setImageIndex(imageIndex + 1)
+            setMilliseconds(timeInMilliseconds)
+          } else {
+            clearInterval(intervalID)
           }
-          clearInterval(intervalID)
         }
       }, 1000)
     }
 
+    if (pause === true) {
+      clearInterval(intervalID)
+    }
+
     return () => clearInterval(intervalID)
-  }, [imageIndex])
+  }, [imageIndex, pause, milliseconds])
 
   const { minutes, seconds } = time
 

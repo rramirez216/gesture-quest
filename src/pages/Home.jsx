@@ -24,11 +24,7 @@ function Home() {
   }
 
   const handleSliderDisplay = () => {
-    if (sliderDisplay) {
-      setSliderDisplay(false)
-    } else {
-      setSliderDisplay(true)
-    }
+    setSliderDisplay(!sliderDisplay)
   }
 
   React.useEffect(() => {

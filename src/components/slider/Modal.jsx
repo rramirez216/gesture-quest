@@ -11,22 +11,36 @@ function Modal({
   imageList,
 }) {
   const [imageIndex, setImageIndex] = React.useState(0)
+  const [pause, setPause] = React.useState(false)
 
   const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
+
+  function convertToMilliseconds() {
+    const { radioNum, radioStr } = intervalTime
+    if (radioStr == 'min' || radioStr == 'mins') {
+      return radioNum * 60 * 1000
+    } else {
+      return radioNum * 1000
+    }
+  }
+  let timeInMilliseconds = convertToMilliseconds()
 
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
       <Timer
-        intervalTime={intervalTime}
+        timeInMilliseconds={timeInMilliseconds}
         imageIndex={imageIndex}
         setImageIndex={setImageIndex}
         imageList={imageList}
+        pause={pause}
       />
     ) : (
-      <Timer intervalTime={intervalTime} imageList={imageList} />
+      <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
     )
 
-  console.log(timer)
+  const handlePause = () => {
+    setPause(!pause)
+  }
 
   return (
     <Wrapper display={isSliderOn}>
@@ -36,8 +50,12 @@ function Modal({
         )}
       </ImageWrapper>
       <ButtonWrapper>
-        <Button handleButton={handleSliderDisplay} children={'End Session'} />
+        <Button
+          handleButton={handlePause}
+          children={pause ? 'Unpause' : 'Pause'}
+        />
         {timer}
+        <Button handleButton={handleSliderDisplay} children={'End Session'} />
       </ButtonWrapper>
     </Wrapper>
   )
@@ -57,6 +75,9 @@ const Wrapper = styled.div`
   padding: 24px 48px;
 `
 const ImageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: hsl(130, 55%, 79%);
