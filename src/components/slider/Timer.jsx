@@ -17,6 +17,10 @@ function Timer({
       seconds: Math.floor((input % 60000) / 1000),
     }
   }
+  function updateImageIndex() {
+    setImageIndex(imageIndex + 1)
+    setMilliseconds(timeInMilliseconds)
+  }
 
   React.useEffect(() => {
     let intervalID
@@ -26,13 +30,12 @@ function Timer({
         let { minutes, seconds } = currentTime
 
         setTime({ minutes, seconds })
-        if ((imageIndex <= imageList.length - 1) && (minutes + seconds)) {
+        if (imageIndex <= imageList.length - 1 && minutes + seconds) {
           setMilliseconds((m) => m - 1000)
         }
         if (!minutes && !seconds) {
           if (imageIndex < imageList.length - 1) {
-            setImageIndex(imageIndex + 1)
-            setMilliseconds(timeInMilliseconds)
+            updateImageIndex()
           } else {
             clearInterval(intervalID)
           }
@@ -51,16 +54,14 @@ function Timer({
 
   return (
     <TimerWrapper>
-      <p>
-        {minutes || seconds
-          ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-          : '0:00'}
-      </p>
+      {minutes || seconds
+        ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+        : '0:00'}
     </TimerWrapper>
   )
 }
 
-const TimerWrapper = styled.div`
+const TimerWrapper = styled.p`
   padding: 4px;
   background-color: aliceblue;
 `
