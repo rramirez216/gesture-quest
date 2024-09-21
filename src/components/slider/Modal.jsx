@@ -10,10 +10,6 @@ function Modal({
   intervalTime,
   imageList,
 }) {
-  const [imageIndex, setImageIndex] = React.useState(0)
-  const [pause, setPause] = React.useState(false)
-
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
 
   function convertToMilliseconds() {
     const { radioNum, radioStr } = intervalTime
@@ -23,7 +19,17 @@ function Modal({
       return radioNum * 1000
     }
   }
+
   let timeInMilliseconds = convertToMilliseconds()
+
+  const [imageIndex, setImageIndex] = React.useState(0)
+  const [pause, setPause] = React.useState(false)
+const [direction, setDirection] = React.useState('')
+    const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
+
+  const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
+
+  
 
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
@@ -33,6 +39,8 @@ function Modal({
         setImageIndex={setImageIndex}
         imageList={imageList}
         pause={pause}
+        milliseconds={milliseconds}
+        setMilliseconds={setMilliseconds}
       />
     ) : (
       <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
@@ -40,6 +48,14 @@ function Modal({
 
   const handlePause = () => {
     setPause(!pause)
+  }
+
+  const handleClick = (str) => {
+    if(str === 'Next' && imageIndex < imageList.length - 1) {
+      setImageIndex(imageIndex + 1)
+      setMilliseconds(timeInMilliseconds)
+      console.log('+1')
+    }
   }
 
   return (
@@ -50,6 +66,7 @@ function Modal({
         )}
       </ImageWrapper>
       <ButtonWrapper>
+        <Button handleButton={handleClick} children={'Next'} />
         <Button
           handleButton={handlePause}
           children={pause ? 'Unpause' : 'Pause'}
