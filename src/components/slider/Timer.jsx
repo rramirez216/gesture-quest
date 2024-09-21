@@ -7,9 +7,12 @@ function Timer({
   setImageIndex,
   imageList,
   pause,
+  milliseconds,
+  setMilliseconds,
 }) {
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
-  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
+
+  const arrayLength = imageList.length - 1
 
   function calculateCurrentTime(input) {
     return {
@@ -17,11 +20,11 @@ function Timer({
       seconds: Math.floor((input % 60000) / 1000),
     }
   }
-  function updateImageIndex() {
-    setImageIndex(imageIndex + 1)
+  function updateImageIndex(num) {
+    setImageIndex(imageIndex + num)
     setMilliseconds(timeInMilliseconds)
   }
-
+  
   React.useEffect(() => {
     let intervalID
     if (imageList.length > 0) {
@@ -30,11 +33,11 @@ function Timer({
         let { minutes, seconds } = currentTime
 
         setTime({ minutes, seconds })
-        if (imageIndex <= imageList.length - 1 && minutes + seconds) {
+        if (imageIndex <= arrayLength && minutes + seconds) {
           setMilliseconds((m) => m - 1000)
         }
         if (!minutes && !seconds) {
-          if (imageIndex < imageList.length - 1) {
+          if (imageIndex < arrayLength) {
             updateImageIndex()
           } else {
             clearInterval(intervalID)
@@ -42,7 +45,7 @@ function Timer({
         }
       }, 1000)
     }
-
+     
     if (pause === true) {
       clearInterval(intervalID)
     }
