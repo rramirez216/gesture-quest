@@ -4,7 +4,7 @@ import { styled } from '@linaria/react'
 function Button({ handleButton, children }) {
   return (
     <>
-      <Wrapper type='button' onClick={handleButton}>
+      <Wrapper type='button' onClick={() => children === 'Next' || children === 'Prev' ? handleButton(children) : handleButton()}>
         {children}
       </Wrapper>
     </>
