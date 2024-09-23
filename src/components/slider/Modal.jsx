@@ -24,12 +24,10 @@ function Modal({
 
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
-const [direction, setDirection] = React.useState('')
-    const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
-
+  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
   const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
 
-  
+
 
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
@@ -51,11 +49,16 @@ const [direction, setDirection] = React.useState('')
   }
 
   const handleClick = (str) => {
-    if(str === 'Next' && imageIndex < imageList.length - 1) {
+    if (str === 'Next' && imageIndex < imageList.length - 1) {
       setImageIndex(imageIndex + 1)
       setMilliseconds(timeInMilliseconds)
       console.log('+1')
+    } else if (str === 'Prev' && imageIndex > 0) {
+      setImageIndex(imageIndex - 1)
+      setMilliseconds(timeInMilliseconds)
+      console.log('-1')
     }
+
   }
 
   return (
@@ -66,13 +69,14 @@ const [direction, setDirection] = React.useState('')
         )}
       </ImageWrapper>
       <ButtonWrapper>
-        <Button handleButton={handleClick} children={'Next'} />
+        <Button handleButton={handleClick} buttonStr={'Prev'} />
+        <Button handleButton={handleClick} buttonStr={'Next'} />
         <Button
           handleButton={handlePause}
-          children={pause ? 'Unpause' : 'Pause'}
+          buttonStr={pause ? 'Play' : 'Pause'}
         />
         {timer}
-        <Button handleButton={handleSliderDisplay} children={'End Session'} />
+        <Button handleButton={handleSliderDisplay} buttonStr={'End Session'} />
       </ButtonWrapper>
     </Wrapper>
   )
