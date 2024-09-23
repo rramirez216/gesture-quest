@@ -20,11 +20,11 @@ function Timer({
       seconds: Math.floor((input % 60000) / 1000),
     }
   }
-  function updateImageIndex(num) {
-    setImageIndex(imageIndex + num)
+  function updateImageIndex() {
+    setImageIndex(imageIndex + 1)
     setMilliseconds(timeInMilliseconds)
   }
-  
+
   React.useEffect(() => {
     let intervalID
     if (imageList.length > 0) {
@@ -45,7 +45,7 @@ function Timer({
         }
       }, 1000)
     }
-     
+
     if (pause === true) {
       clearInterval(intervalID)
     }
