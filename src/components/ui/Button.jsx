@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@linaria/react'
 import { Pause, SkipBack, SkipForward, Play, X } from 'react-feather'
 
 function Button({ handleButton, buttonStr }) {
@@ -27,25 +26,11 @@ function Button({ handleButton, buttonStr }) {
 
   return (
     <>
-      <Wrapper type='button' onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
+      <button className='cursor-pointer px-4 py-2 bg-accent hover:bg-accentHover text-2xl text-secondary' type='button' onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
         {icon}
-      </Wrapper>
+      </button>
     </>
   )
 }
-
-const Wrapper = styled.button`
-  padding: 4px 16px 4px;
-  cursor: pointer;
-  background-color: hsl(133deg 47% 88%);
-  border: 2px solid hsl(133deg 50% 82%);
-  color: hsl(195deg 72% 22%);
-  font-size: 1.5rem;
-
-  &:hover {
-    background-color: hsl(133deg 47% 80%);
-    border: 2px solid hsl(133deg 50% 80%);
-  }
-`
 
 export default Button

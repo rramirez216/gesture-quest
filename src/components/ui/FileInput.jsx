@@ -1,11 +1,10 @@
 import React from 'react'
-import { styled } from '@linaria/react'
-
 
 function FileInput({ handleImage }) {
   return (
     <>
-      <Input
+      <input
+        className='file:px-4 file:py-2 file:text-2xl file:bg-accent file:text-secondary file:cursor-pointer file:border-0 hover:file:bg-accentHover'
         type='file'
         name='file'
         id='file'
@@ -16,20 +15,5 @@ function FileInput({ handleImage }) {
     </>
   )
 }
-
-const Input = styled.input`
-&::file-selector-button {
-  padding: 4px 16px 4px;
-  cursor: pointer;
-  background-color: hsl(133deg 47% 88%);
-  border: 2px solid hsl(133deg 50% 82%);
-  color: hsl(195deg 72% 22%);
-  font-size: 1.5rem;
-  &:hover {
-    background-color: hsl(133deg 47% 80%);
-    border: 2px solid hsl(133deg 50% 80%);
-  }
-}
-`
 
 export default FileInput

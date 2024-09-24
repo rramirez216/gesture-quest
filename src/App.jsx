@@ -1,19 +1,12 @@
 import React from 'react'
-import { styled } from '@linaria/react'
 import Home from './pages/Home'
 
 function App() {
   return (
-    <Main>
+    <main className='max-h-full h-full relative bg-gray-50'>
       <Home />
-    </Main>
+    </main>
   )
 }
 
-const Main = styled.main`
-  max-height: 100%;
-  height: 100%;
-  position: relative;
-  color: hsl(195deg 72% 22%);
-`
 export default App
