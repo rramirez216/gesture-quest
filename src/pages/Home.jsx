@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@linaria/react'
 import FileInput from '../components/ui/FileInput'
 import Form from '../components/ui/Form'
 import Button from '../components/ui/Button'
@@ -40,10 +39,7 @@ function Home() {
     <>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
       <FileInput handleImage={handleImage} />
-      {imageList.map((item) => (
-        <Image src={item} alt='' key={crypto.randomUUID()} />
-      ))}
-      <Button handleButton={handleSliderDisplay} children={'Start'} />
+      <Button handleButton={handleSliderDisplay} />
       {sliderDisplay && (
         <Modal
           sliderDisplay={sliderDisplay}
@@ -55,10 +51,5 @@ function Home() {
     </>
   )
 }
-
-const Image = styled.img`
-  width: 100px;
-  height: 100px;
-`
 
 export default Home
