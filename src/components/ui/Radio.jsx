@@ -10,6 +10,7 @@ function Radio({
   return (
     <div>
       <input
+        className='mr-2'
         type='radio'
         name='interval-times'
         id={labelID}
