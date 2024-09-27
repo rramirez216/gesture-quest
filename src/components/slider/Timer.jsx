@@ -1,5 +1,4 @@
 import React from 'react'
-import { styled } from '@linaria/react'
 
 function Timer({
   timeInMilliseconds,
@@ -56,16 +55,12 @@ function Timer({
   const { minutes, seconds } = time
 
   return (
-    <TimerWrapper>
+    <p>
       {minutes || seconds
         ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
         : '0:00'}
-    </TimerWrapper>
+    </p>
   )
 }
 
-const TimerWrapper = styled.p`
-  padding: 4px;
-  background-color: aliceblue;
-`
 export default Timer
