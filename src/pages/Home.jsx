@@ -38,8 +38,10 @@ function Home() {
   return (
     <>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
-      <FileInput handleImage={handleImage} />
-      <Button handleButton={handleSliderDisplay} />
+      <div className='flex flex-row items-center justify-center'>
+        <FileInput handleImage={handleImage} />
+        <Button handleButton={handleSliderDisplay} />
+      </div>
       {sliderDisplay && (
         <Modal
           sliderDisplay={sliderDisplay}
