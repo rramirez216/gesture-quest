@@ -25,7 +25,7 @@ function Modal({
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'none'
+  const isSliderOn = sliderDisplay === true ? 'flex' : 'hidden'
 
 
 
@@ -62,13 +62,13 @@ function Modal({
   }
 
   return (
-    <Wrapper display={isSliderOn}>
-      <ImageWrapper>
+    <div className={`${isSliderOn} flex-col justify-center items-center absolute inset-0 px-12 py-6`} display={isSliderOn}>
+      <div className='w-full h-full flex justify-center items-center border-2 border-secondary'>
         {imageList.length > 0 && (
           <Image src={imageList[imageIndex]} alt='file' />
         )}
-      </ImageWrapper>
-      <ButtonWrapper>
+      </div>
+      <div className='flex flex-row transform -translate-y-[200%]'>
         <Button handleButton={handleClick} buttonStr={'Prev'} />
         <Button handleButton={handleClick} buttonStr={'Next'} />
         <Button
@@ -77,36 +77,9 @@ function Modal({
         />
         {timer}
         <Button handleButton={handleSliderDisplay} buttonStr={'End Session'} />
-      </ButtonWrapper>
-    </Wrapper>
+      </div>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  display: ${(props) => props.display};
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  background-color: hsl(25deg 100% 97% / 50%);
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 24px 48px;
-`
-const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: hsl(130, 55%, 79%);
-`
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  transform: translateY(-200%);
-`
 
 export default Modal
