@@ -5,9 +5,9 @@ import { constants } from '../../data/constants'
 function Form({ intervalTime, setIntervalTime }) {
   let { radioData } = constants
   return (
-    <form>
+    <form className='border-2 border-secondary p-8'>
       <fieldset>
-        <legend>Interval</legend>
+        <legend>Select time:</legend>
         {radioData.map((item) => (
           <Radio
             key={item.id}
