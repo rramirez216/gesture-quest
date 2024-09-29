@@ -36,12 +36,11 @@ function Home() {
   }, [imageList])
 
   return (
-    <>
+    <section className='bg-primary w-full flex flex-col items-center gap-12 max-w-xl py-12'>
+
+      <FileInput handleImage={handleImage} />
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
-      <div className='flex flex-row items-center justify-center'>
-        <FileInput handleImage={handleImage} />
-        <Button handleButton={handleSliderDisplay} />
-      </div>
+      <Button handleButton={handleSliderDisplay} />
       {sliderDisplay && (
         <Modal
           sliderDisplay={sliderDisplay}
@@ -50,7 +49,7 @@ function Home() {
           imageList={imageList}
         />
       )}
-    </>
+    </section>
   )
 }
 
