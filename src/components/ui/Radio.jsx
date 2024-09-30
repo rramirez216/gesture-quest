@@ -9,9 +9,9 @@ function Radio({
 }) {
   let checked = intervalTime.radioNum == num ? 'bg-accentHover' : 'bg-accent'
   return (
-    <label className={`block ${checked} px-4 py-2 cursor-pointer`}>
+    <label className={`block ${checked} px-4 py-2 cursor-pointer relative select-none has-[:focus]:outline-1 has-[:focus]:outline-focusOutline`} >
       <input
-        className='mr-2 hidden'
+        className='mr-2 absolute h-0 w-0'
         type='radio'
         name='interval-times'
         id={labelID}
