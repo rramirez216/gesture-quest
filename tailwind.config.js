@@ -5,11 +5,16 @@ export default {
     colors: {
       primary: "#F8F8F7",
       secondary: "#0E3E4E",
-      secondaryLight: "#2B738B",
-      accent: "#D2EFD8",
-      accentHover: "#b4e4be",
+      secondaryLight: "#2B5664",
+      accent: "#c6eccd",
+      accentHover: "#8CD99C",
+      focusOutline: "#F2C0E8",
     },
     extend: {},
   },
   plugins: [],
 };
+/* 8CD99C
+ * D2EfD8 - old
+ * d4e4be - old hover
+ * */
