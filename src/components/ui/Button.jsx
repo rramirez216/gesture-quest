@@ -6,19 +6,19 @@ function Button({ handleButton, buttonStr }) {
 
   switch (buttonStr) {
     case 'Next':
-      icon = <SkipForward />;
+      icon = <SkipForward size={40} />;
       break;
     case 'Prev':
-      icon = <SkipBack />;
+      icon = <SkipBack size={40} />;
       break;
     case 'Pause':
-      icon = <Pause />;
+      icon = <Pause size={40} />;
       break;
     case 'Play':
-      icon = <Play />;
+      icon = <Play size={40} />;
       break;
     case 'End Session':
-      icon = <X />;
+      icon = <X size={40} />;
       break;
     default:
       icon = 'Start';
