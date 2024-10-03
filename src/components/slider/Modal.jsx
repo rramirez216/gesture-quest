@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '../ui/Button'
 import Timer from './Timer'
 import Image from './Image'
+import ButtonWrapper from './ButtonWrapper'
 
 function Modal({
   sliderDisplay,
@@ -67,16 +68,7 @@ function Modal({
           <Image src={imageList[imageIndex]} alt='file' />
         )}
       </div>
-      <div className='flex flex-row transform -translate-y-[200%]'>
-        <Button handleButton={handleClick} buttonStr={'Prev'} />
-        <Button handleButton={handleClick} buttonStr={'Next'} />
-        <Button
-          handleButton={handlePause}
-          buttonStr={pause ? 'Play' : 'Pause'}
-        />
-        {timer}
-        <Button handleButton={handleSliderDisplay} buttonStr={'End Session'} />
-      </div>
+      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} />
     </div>
   )
 }
