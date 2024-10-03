@@ -5,19 +5,21 @@ import { constants } from '../../data/constants'
 function Form({ intervalTime, setIntervalTime }) {
   let { radioData } = constants
   return (
-    <form className='border-2 border-secondary p-8'>
-      <fieldset>
-        <legend>Select time:</legend>
-        {radioData.map((item) => (
-          <Radio
-            key={item.id}
-            radioStr={item.radioStr}
-            radioNum={item.radioNum}
-            labelID={item.labelID}
-            intervalTime={intervalTime}
-            setIntervalTime={setIntervalTime}
-          />
-        ))}
+    <form className='w-80 text-2xl text-secondary'>
+      <fieldset className=''>
+        <legend className='opacity-75 pb-2 text-left' >Select Time Per Image</legend>
+        <div className='grid grid-cols-2 gap-2'>
+          {radioData.map((item) => (
+            <Radio
+              key={item.id}
+              radioStr={item.radioStr}
+              radioNum={item.radioNum}
+              labelID={item.labelID}
+              intervalTime={intervalTime}
+              setIntervalTime={setIntervalTime}
+            />
+          ))}
+        </div>
       </fieldset>
     </form>
   )

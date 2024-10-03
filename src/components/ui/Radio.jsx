@@ -7,10 +7,11 @@ function Radio({
   intervalTime,
   setIntervalTime,
 }) {
+  let checked = intervalTime.radioNum == num ? 'bg-accentHover' : 'bg-accent'
   return (
-    <div>
+    <label className={`block ${checked} px-4 py-2 cursor-pointer relative select-none focus:outline-1 focus:outline-focusOutline`} >
       <input
-        className='mr-2'
+        className='mr-2 absolute h-0 w-0 focus:outline-1 focus:outline-focusOutline'
         type='radio'
         name='interval-times'
         id={labelID}
@@ -18,10 +19,11 @@ function Radio({
         checked={intervalTime.radioNum == num}
         onChange={(e) => {
           setIntervalTime({ radioNum: Number(e.target.value), radioStr })
+          console.log(num)
         }}
       />
-      <label htmlFor={labelID}>{num + ' ' + radioStr}</label>
-    </div>
+      {num + ' ' + radioStr}
+    </label>
   )
 }
 

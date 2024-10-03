@@ -6,19 +6,19 @@ function Button({ handleButton, buttonStr }) {
 
   switch (buttonStr) {
     case 'Next':
-      icon = <SkipForward />;
+      icon = <SkipForward size={40} />;
       break;
     case 'Prev':
-      icon = <SkipBack />;
+      icon = <SkipBack size={40} />;
       break;
     case 'Pause':
-      icon = <Pause />;
+      icon = <Pause size={40} />;
       break;
     case 'Play':
-      icon = <Play />;
+      icon = <Play size={40} />;
       break;
     case 'End Session':
-      icon = <X />;
+      icon = <X size={40} />;
       break;
     default:
       icon = 'Start';
@@ -26,7 +26,7 @@ function Button({ handleButton, buttonStr }) {
 
   return (
     <>
-      <button className='cursor-pointer px-4 py-2 bg-accent hover:bg-accentHover text-2xl text-secondary' type='button' onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
+      <button className='w-full max-w-xs cursor-pointer px-4 py-2 bg-accent hover:bg-accentHover text-2xl text-secondary' type='button' onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
         {icon}
       </button>
     </>
