@@ -68,7 +68,7 @@ function Modal({
           <Image src={imageList[imageIndex]} alt='file' />
         )}
       </div>
-      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} />
+      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
     </div>
   )
 }
