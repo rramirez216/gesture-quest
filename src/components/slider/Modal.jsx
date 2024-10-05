@@ -25,7 +25,7 @@ function Modal({
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'hidden'
+  const isSliderOn = sliderDisplay === true ? 'block' : 'hidden'
 
 
 
@@ -62,7 +62,7 @@ function Modal({
   }
 
   return (
-    <div className={`${isSliderOn} flex-col justify-center items-center absolute inset-0 px-12 py-6`} display={isSliderOn}>
+    <div className={`${isSliderOn} absolute inset-0 `} display={isSliderOn}>
       <div className='w-full h-full flex justify-center items-center border-2 border-secondary'>
         {imageList.length > 0 && (
           <Image src={imageList[imageIndex]} alt='file' />
