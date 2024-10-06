@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../ui/Button'
 import Timer from './Timer'
 import Image from './Image'
 import ButtonWrapper from './ButtonWrapper'
