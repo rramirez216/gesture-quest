@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../ui/Button'
 import Timer from './Timer'
 import Image from './Image'
 import ButtonWrapper from './ButtonWrapper'
@@ -25,7 +24,7 @@ function Modal({
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'hidden'
+  const isSliderOn = sliderDisplay === true ? 'block' : 'hidden'
 
 
 
@@ -62,13 +61,13 @@ function Modal({
   }
 
   return (
-    <div className={`${isSliderOn} flex-col justify-center items-center absolute inset-0 px-12 py-6`} display={isSliderOn}>
+    <div className={`${isSliderOn} absolute inset-0 `} display={isSliderOn}>
       <div className='w-full h-full flex justify-center items-center border-2 border-secondary'>
         {imageList.length > 0 && (
           <Image src={imageList[imageIndex]} alt='file' />
         )}
       </div>
-      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} />
+      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
     </div>
   )
 }
