@@ -5,7 +5,7 @@ function ButtonWrapper({ handleClick, handlePause, timer, handleSliderDisplay, p
   const currentImage = imageIndex + 1
   const totalNumberOfImages = imageList.length
   return (
-    <div className='max-w-min mx-auto flex items-center gap-2 text-2xl transform -translate-y-[120%] text-secondary p-2 border border-secondary bg-slate-200'>
+    <div className='max-w-min mx-auto flex items-center gap-2 text-2xl transform -translate-y-[120%] text-slate-600 p-2 border border-slate-300 bg-slate-200'>
       <Button handleButton={handleClick} buttonStr={'Prev'} />
       <p className='min-w-max'>
         {`${currentImage} of ${totalNumberOfImages}`}
