@@ -36,7 +36,7 @@ function Home() {
   }, [imageList])
 
   return (
-    <section className='bg-primary w-full flex flex-col items-center gap-12 max-w-xl py-12'>
+    <section className='bg-slate-200 w-full flex flex-col items-center gap-12 max-w-xl py-12'>
 
       <FileInput handleImage={handleImage} />
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
