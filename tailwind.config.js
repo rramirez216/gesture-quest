@@ -11,6 +11,10 @@ export default {
         accentHover: "#8CD99C",
         focusOutline: "#F2C0E8",
       },
+      fontFamily: {
+        quicksand: ["Quicksand", "sans-serif"],
+        leagueSpartan: ["League Spartan", "sans-serif"],
+      },
     },
   },
   plugins: [],
