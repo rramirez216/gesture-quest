@@ -2,11 +2,12 @@ import React from 'react'
 import Radio from './Radio'
 import { constants } from '../../data/constants'
 
-function Form({ intervalTime, setIntervalTime }) {
+function Form({ intervalTime, setIntervalTime, children }) {
   let { radioData } = constants
   return (
-    <form className='w-80 text-2xl'>
-      <fieldset className=''>
+    <form className='bg-slate-200 w-full flex flex-col items-center gap-12 max-w-xl py-12' onSubmit={(e) => e.preventDefault()}>
+      {children[0]}
+      <fieldset className='text-2xl w-full max-w-xs'>
         <legend className='text-slate-600 pb-2 text-left' >Select Time Per Image</legend>
         <div className='grid grid-cols-2 gap-2'>
           {radioData.map((item) => (
@@ -21,6 +22,7 @@ function Form({ intervalTime, setIntervalTime }) {
           ))}
         </div>
       </fieldset>
+      {children[1]}
     </form>
   )
 }
