@@ -23,7 +23,9 @@ function Home() {
   }
 
   const handleSliderDisplay = () => {
-    setSliderDisplay(!sliderDisplay)
+    if (imageList.length > 0) {
+      setSliderDisplay(!sliderDisplay)
+    }
   }
 
   React.useEffect(() => {
@@ -36,11 +38,12 @@ function Home() {
   }, [imageList])
 
   return (
-    <section className='bg-slate-200 w-full flex flex-col items-center gap-12 max-w-xl py-12'>
+    <section className='w-full h-full flex flex-col items-center justify-center'>
 
-      <FileInput handleImage={handleImage} />
-      <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} />
-      <Button handleButton={handleSliderDisplay} />
+      <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime}>
+        <FileInput handleImage={handleImage} />
+        <Button handleButton={handleSliderDisplay} buttonType={'submit'} />
+      </Form>
       {sliderDisplay && (
         <Modal
           sliderDisplay={sliderDisplay}
