@@ -1,8 +1,9 @@
 import React from 'react'
+import Tooltip from './Tooltip'
 
 function FileInput({ handleImage }) {
   return (
-    <>
+    <div className='relative'>
       <input
         className='w-full max-w-xs bg-slate-200 border border-slate-400 hover:scale-105 text-xl file:px-4 file:py-2 file:text-2xl file:bg-emerald-400 file:text-slate-800 file:cursor-pointer file:border-0'
         type='file'
@@ -13,7 +14,8 @@ function FileInput({ handleImage }) {
         required
         multiple
       />
-    </>
+      <Tooltip />
+    </div>
   )
 }
 
