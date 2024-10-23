@@ -7,9 +7,9 @@ function Radio({
   intervalTime,
   setIntervalTime,
 }) {
-  let checked = intervalTime.radioNum == num ? 'bg-emerald-700' : 'bg-emerald-400'
+  let checked = intervalTime.radioNum == num ? 'bg-emerald-400' : 'bg-slate-300'
   return (
-    <label className={`block ${checked} px-4 py-2 text-slate-800 cursor-pointer relative select-none has-[:checked]:text-slate-50 hover:scale-105 focus:outline-1 focus:outline-focusOutline`} >
+    <label className={`block ${checked} px-4 py-2 text-slate-800 cursor-pointer relative select-none hover:scale-105 focus:outline-1 focus:outline-focusOutline`} >
       <input
         className='mr-2 absolute h-0 w-0 invisible'
         type='radio'
