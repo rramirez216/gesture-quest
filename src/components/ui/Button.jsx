@@ -24,9 +24,11 @@ function Button({ handleButton, buttonStr, buttonType = 'button' }) {
       icon = 'Start';
   }
 
+  let color = icon === 'Start' ? 'bg-slate-300 hover:bg-emerald-400' : 'bg-emerald-400'
+
   return (
     <>
-      <button className='w-full max-w-xs cursor-pointer px-4 py-2 bg-emerald-400 hover:scale-105 text-2xl text-slate-800' type={buttonType} onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
+      <button className={`w-full max-w-xs cursor-pointer px-4 py-2 ${color} hover:scale-105 text-2xl text-slate-800`} type={buttonType} onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
         {icon}
       </button>
     </>
