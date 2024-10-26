@@ -62,7 +62,7 @@ function Modal({
 
   return (
     <div className={`${isSliderOn} absolute inset-0 `} display={isSliderOn}>
-      <div className='w-full h-full flex justify-center items-center border-2 bg-slate-100'>
+      <div className='w-full h-full flex justify-center items-center border-2 bg-slate-200'>
         {imageList.length > 0 && (
           <Image src={imageList[imageIndex]} alt='file' />
         )}
