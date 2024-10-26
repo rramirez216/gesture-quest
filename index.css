@@ -14,8 +14,4 @@ body,
   .triangle {
     clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
   }
-
-  .nav-clip {
-    clip-path: ellipse(40% 48% at 50% 50%);
-  }
 }
