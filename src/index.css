@@ -16,6 +16,6 @@ body,
   }
 
   .nav-clip {
-    clip-path: circle(52.9% at 50% 51%);
+    clip-path: polygon(0 30%, 100% 30%, 100% 60%, 0 60%);
   }
 }
