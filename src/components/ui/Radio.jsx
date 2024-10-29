@@ -7,11 +7,12 @@ function Radio({
   intervalTime,
   setIntervalTime,
 }) {
+  //let checked = intervalTime.radioNum == num ? 'bg-emerald-400' : 'bg-slate-300'
   let checked = intervalTime.radioNum == num ? 'bg-emerald-400' : 'bg-slate-300'
   return (
-    <label className={`block ${checked} px-4 py-2 text-slate-800 cursor-pointer relative select-none hover:scale-105 focus:outline-1 focus:outline-focusOutline`} >
+    <label className={`block   text-slate-800 cursor-pointer relative select-none hover:scale-105 `} >
       <input
-        className='absolute h-[1em] w-[1em] opacity-0'
+        className='absolute h-[1em] w-[1em] peer opacity-0'
         type='radio'
         name='interval-times'
         id={labelID}
@@ -22,7 +23,7 @@ function Radio({
           console.log(num)
         }}
       />
-      <span>{num + ' ' + radioStr}</span>
+      <span className={`block ${checked} px-4 py-2 w-full h-full peer-focus:radio-box-shadow`}>{num + ' ' + radioStr}</span>
     </label>
   )
 }
