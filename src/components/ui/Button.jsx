@@ -28,7 +28,7 @@ function Button({ handleButton, buttonStr, buttonType = 'button' }) {
 
   return (
     <>
-      <button className={`w-full max-w-xs cursor-pointer px-4 py-2 ${color} hover:scale-105 text-2xl text-slate-800`} type={buttonType} onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
+      <button className={`w-full max-w-xs cursor-pointer px-4 py-2 ${color} hover:scale-105 text-2xl text-slate-800 focus:outline-emerald-700`} type={buttonType} onClick={() => buttonStr === 'Next' || buttonStr === 'Prev' ? handleButton(buttonStr) : handleButton()}>
         {icon}
       </button>
     </>
