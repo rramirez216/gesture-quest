@@ -23,7 +23,7 @@ function Radio({
           console.log(num)
         }}
       />
-      <span className={`block ${checked} px-4 py-2 w-full h-full peer-focus:radio-box-shadow`}>{num + ' ' + radioStr}</span>
+      <span className={`block ${checked} px-4 py-2 w-full h-full peer-focus-visible:radio-box-shadow`}>{num + ' ' + radioStr}</span>
     </label>
   )
 }
