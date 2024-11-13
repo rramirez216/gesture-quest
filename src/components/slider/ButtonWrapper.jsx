@@ -10,15 +10,15 @@ function ButtonWrapper({ handleClick, handlePause, timer, handleSliderDisplay, p
         <span className="inline-block">{totalNumberOfImages}</span>
       </p>
       <Button handleButton={handleClick} buttonStr={'Next'} />
-      <div className='hidden md:block'>
+      <div className=' md:block'>
         <Button
           handleButton={handlePause}
           buttonStr={pause ? 'Play' : 'Pause'}
         />
       </div>
-      <p className='md:bg-slate-200 md:flex md:flex-col md:justify-center md:px-2 hidden'>
+      {/*<p className='md:bg-slate-200 md:flex md:flex-col md:justify-center md:px-2 hidden'>
         {timer}
-      </p>
+      </p>*/}
       <div className="hidden md:block">
         <Button handleButton={handleSliderDisplay} buttonStr={'End Session'} />
       </div>
