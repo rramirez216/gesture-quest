@@ -70,7 +70,7 @@ function Modal({
         </div>
         <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
       </div>
-      {/*<p className='text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl md:hidden'>{timer}</p>*/}
+      <p className='text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl'>{timer}</p>
     </>
   )
 }
