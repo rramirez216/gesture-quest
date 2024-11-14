@@ -1,4 +1,5 @@
 import React from 'react'
+import TimerDisplay from './TimerDisplay'
 
 function Timer({
   timeInMilliseconds,
@@ -52,14 +53,10 @@ function Timer({
     return () => clearInterval(intervalID)
   }, [imageIndex, pause, milliseconds])
 
-  const { minutes, seconds } = time
-
   return (
-    <p>
-      {minutes || seconds
-        ? `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-        : '0:00'}
-    </p>
+    <>
+      <TimerDisplay time={time} />
+    </>
   )
 }
 

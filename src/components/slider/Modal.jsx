@@ -61,14 +61,17 @@ function Modal({
   }
 
   return (
-    <div className={`${isSliderOn} absolute inset-0 `} display={isSliderOn}>
-      <div className='w-full h-full flex justify-center items-center border-2 bg-slate-200'>
-        {imageList.length > 0 && (
-          <Image src={imageList[imageIndex]} alt='file' />
-        )}
+    <>
+      <div className={`${isSliderOn} absolute inset-0`} display={isSliderOn}>
+        <div className='w-full h-full flex justify-center items-center border-2 bg-slate-100'>
+          {imageList.length > 0 && (
+            <Image src={imageList[imageIndex]} alt='file' />
+          )}
+        </div>
+        <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
       </div>
-      <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
-    </div>
+      <p className='text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl'>{timer}</p>
+    </>
   )
 }
 
