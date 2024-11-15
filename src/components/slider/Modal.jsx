@@ -9,7 +9,6 @@ function Modal({
   intervalTime,
   imageList,
 }) {
-
   function convertToMilliseconds() {
     const { radioNum, radioStr } = intervalTime
     if (radioStr == 'min' || radioStr == 'mins') {
@@ -25,8 +24,6 @@ function Modal({
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
   const isSliderOn = sliderDisplay === true ? 'block' : 'hidden'
-
-
 
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
@@ -57,7 +54,6 @@ function Modal({
       setMilliseconds(timeInMilliseconds)
       console.log('-1')
     }
-
   }
 
   return (
@@ -68,9 +64,19 @@ function Modal({
             <Image src={imageList[imageIndex]} alt='file' />
           )}
         </div>
-        <ButtonWrapper handleClick={handleClick} handlePause={handlePause} timer={timer} handleSliderDisplay={handleSliderDisplay} pause={pause} imageList={imageList} imageIndex={imageIndex} />
+        <ButtonWrapper
+          handleClick={handleClick}
+          handlePause={handlePause}
+          timer={timer}
+          handleSliderDisplay={handleSliderDisplay}
+          pause={pause}
+          imageList={imageList}
+          imageIndex={imageIndex}
+        />
       </div>
-      <p className='text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl'>{timer}</p>
+      <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl rounded-b-lg'>
+        {timer}
+      </p>
     </>
   )
 }
