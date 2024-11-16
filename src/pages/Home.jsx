@@ -38,8 +38,7 @@ function Home() {
   }, [imageList])
 
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center px-8'>
-
+    <section className='w-full h-full md:flex md:flex-col md:items-center md:justify-center md:px-8'>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime}>
         <FileInput handleImage={handleImage} />
         <Button handleButton={handleSliderDisplay} buttonType={'submit'} />
