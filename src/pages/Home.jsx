@@ -3,6 +3,7 @@ import FileInput from '../components/ui/FileInput'
 import Form from '../components/ui/Form'
 import Button from '../components/ui/Button'
 import Modal from '../components/slider/Modal'
+import shuffleArray from './Home.helpers.js'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
@@ -18,8 +19,9 @@ function Home() {
       let url = URL.createObjectURL(obj)
       arr = [...arr, url]
     }
-    setImageList([...arr])
+    setImageList(shuffleArray(arr))
     console.log(arr)
+    console.log(shuffleArray(arr))
   }
 
   const handleSliderDisplay = () => {
