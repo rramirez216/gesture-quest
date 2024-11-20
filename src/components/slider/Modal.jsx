@@ -74,7 +74,7 @@ function Modal({
           imageIndex={imageIndex}
         />
       </div>
-      <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 px-4 text-2xl rounded-b-lg'>
+      <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 text-2xl rounded-b-lg'>
         {timer}
       </p>
     </>
