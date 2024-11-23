@@ -15,13 +15,15 @@ function Home() {
 
   const handleImage = (event) => {
     let arr = []
+
     for (const obj of event.target.files) {
       let url = URL.createObjectURL(obj)
       arr = [...arr, url]
     }
+
     setImageList(shuffleArray(arr))
+
     console.log(arr)
-    console.log(shuffleArray(arr))
   }
 
   const handleSliderDisplay = () => {
