@@ -1,6 +1,6 @@
 import React from 'react'
 import Timer from './Timer'
-import Image from './Image'
+import ImageContainer from './ImageContainer'
 import ButtonWrapper from './ButtonWrapper'
 
 function Modal({
@@ -58,12 +58,8 @@ function Modal({
 
   return (
     <>
-      <div className={`${isSliderOn} absolute inset-0`} display={isSliderOn}>
-        <div className='w-full h-full flex justify-center items-center border-2 bg-slate-100'>
-          {imageList.length > 0 && (
-            <Image src={imageList[imageIndex]} alt='file' />
-          )}
-        </div>
+      <div className={`${isSliderOn} absolute inset-0 bg-slate-100`} display={isSliderOn}>
+        <ImageContainer imageList={imageList} imageIndex={imageIndex} />
         <ButtonWrapper
           handleClick={handleClick}
           handlePause={handlePause}
