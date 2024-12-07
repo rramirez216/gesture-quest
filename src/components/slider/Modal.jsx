@@ -1,6 +1,6 @@
 import React from 'react'
 import Timer from './Timer'
-import Image from './Image'
+import ImageContainer from './ImageContainer'
 import ButtonWrapper from './ButtonWrapper'
 
 function Modal({
@@ -23,6 +23,7 @@ function Modal({
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
+  const [imageSize, setImageSize] = React.useState(1)
   const isSliderOn = sliderDisplay === true ? 'block' : 'hidden'
 
   let timer =
@@ -48,22 +49,27 @@ function Modal({
     if (str === 'Next' && imageIndex < imageList.length - 1) {
       setImageIndex(imageIndex + 1)
       setMilliseconds(timeInMilliseconds)
-      console.log('+1')
+      setImageSize(1)
     } else if (str === 'Prev' && imageIndex > 0) {
       setImageIndex(imageIndex - 1)
       setMilliseconds(timeInMilliseconds)
-      console.log('-1')
+      setImageSize(1)
     }
   }
 
+  const handleOnWheel = (event) => {
+    if (event.deltaY > 0 && imageSize > 0.33) {
+      setImageSize(imageSize - 0.02)
+    } else if (event.deltaY < 0 && imageSize <= 1) {
+      setImageSize(imageSize + 0.02)
+    }
+  }
+
+
   return (
     <>
-      <div className={`${isSliderOn} absolute inset-0`} display={isSliderOn}>
-        <div className='w-full h-full flex justify-center items-center border-2 bg-slate-100'>
-          {imageList.length > 0 && (
-            <Image src={imageList[imageIndex]} alt='file' />
-          )}
-        </div>
+      <div className={`${isSliderOn} absolute inset-0 bg-slate-100`} display={isSliderOn} onWheel={(event) => handleOnWheel(event)}>
+        <ImageContainer imageList={imageList} imageIndex={imageIndex} imageSize={imageSize} />
         <ButtonWrapper
           handleClick={handleClick}
           handlePause={handlePause}
