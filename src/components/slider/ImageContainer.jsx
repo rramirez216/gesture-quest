@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from './Image'
 
-function ImageContainer({ imageList, imageIndex }) {
+function ImageContainer({ imageList, imageIndex, imageSize }) {
   return (
-    <div className='w-full h-full flex justify-center items-center transform scale-[0.2]' onWheel={(e) => { console.log(e.deltaY, e.deltaX) }}>
+    <div className={'w-full h-full'} style={{ transform: `scale(${imageSize})` }} >
       {imageList.length > 0 && (
         <Image src={imageList[imageIndex]} alt='file' />
       )}
