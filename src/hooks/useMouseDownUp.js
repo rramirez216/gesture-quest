@@ -3,15 +3,23 @@ import React from "react";
 function useMouseDownUp(movement = { x: 0, y: 0 }) {
   const [isMouseDown, setIsMouseDown] = React.useState(false);
   const [offset, setOffSet] = React.useState({ offsetX: 0, offsetY: 0 });
+
   React.useEffect(() => {
     if (isMouseDown === true) {
-      console.log(movement);
-      if (movement.x > 0) {
-        let sum = offset.offsetX + 5;
-        setOffSet({ offsetX: sum, offsetY: offset.offsetY });
-      } else if (movement.x < 0) {
-        let sum = offset.offsetX - 5;
-        setOffSet({ offsetX: sum, offsetY: offset.offsetY });
+      if (movement.x > 0 || movement.x < 0) {
+        let { offsetX, offsetY } = {
+          offsetX: offset.offsetX + movement.x,
+          offsetY: offset.offsetY,
+        };
+        setOffSet({ offsetX, offsetY });
+      }
+
+      if (movement.y > 0 || movement.y < 0) {
+        let { offsetX, offsetY } = {
+          offsetX: offset.offsetX,
+          offsetY: offset.offsetY + movement.y,
+        };
+        setOffSet({ offsetX, offsetY });
       }
     }
   }, [isMouseDown, movement]);
@@ -20,6 +28,7 @@ function useMouseDownUp(movement = { x: 0, y: 0 }) {
     event.preventDefault();
     setIsMouseDown(true);
   }
+
   function handleMouseUp() {
     setIsMouseDown(false);
   }
