@@ -7,9 +7,9 @@ function ImageContainer({ imageList, imageIndex, imageSize }) {
   const { coordinates, handleMouseMove } = useMouseMove()
   const { handleMouseDown, handleMouseUp, offset } = useMouseDownUp(coordinates)
   return (
-    <div className='flex justify-center h-full' style={{ transform: `scale(${imageSize})` }} onMouseMove={(event) => handleMouseMove(event)} >
+    <div className='flex justify-center h-full' onMouseMove={(event) => handleMouseMove(event)} >
       {imageList.length > 0 && (
-        <Image src={imageList[imageIndex]} alt='file' offset={offset} handleMouseDown={handleMouseDown} handleMouseUp={handleMouseUp} />
+        <Image src={imageList[imageIndex]} alt='file' offset={offset} handleMouseDown={handleMouseDown} handleMouseUp={handleMouseUp} imageSize={imageSize} />
       )}
     </div>
 
