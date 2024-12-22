@@ -59,9 +59,9 @@ function Modal({
 
   const handleOnWheel = (event) => {
     if (event.deltaY > 0 && imageSize > 0.33) {
-      setImageSize(imageSize - 0.02)
-    } else if (event.deltaY < 0 && imageSize <= 1) {
-      setImageSize(imageSize + 0.02)
+      setImageSize(imageSize - 0.05)
+    } else if (event.deltaY < 0 && imageSize <= 1.7) {
+      setImageSize(imageSize + 0.05)
     }
   }
 
