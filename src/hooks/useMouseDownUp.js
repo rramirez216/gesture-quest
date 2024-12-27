@@ -6,23 +6,12 @@ function useMouseDownUp(movement = { x: 0, y: 0 }) {
 
   React.useEffect(() => {
     if (isMouseDown === true) {
-      //if ((movement.x > 0 && move) || movement.x < 0) {
       let { offsetX, offsetY } = {
         offsetX: offset.offsetX + movement.x,
         offsetY: offset.offsetY + movement.y,
       };
       setOffSet({ offsetX, offsetY });
       console.log("X:", offsetX, "Y:", offsetY);
-      //}
-
-      /*      if (movement.y > 0 || movement.y < 0) {
-        let { offsetX, offsetY } = {
-          offsetX: offset.offsetX,
-          offsetY: offset.offsetY + movement.y,
-        };
-        setOffSet({ offsetX, offsetY });
-        //console.log("Y:", offsetY);
-      }*/
     }
   }, [isMouseDown, movement]);
 
