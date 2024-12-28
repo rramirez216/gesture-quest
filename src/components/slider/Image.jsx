@@ -1,9 +1,10 @@
 import React from 'react'
 
-function Image({ src, alt }) {
+function Image({ src, alt, handleMouseDown, handleMouseUp, offset, imageSize }) {
+  const { offsetX, offsetY } = offset
   return (
     <>
-      <img className='w-full h-full object-contain' src={src} alt={alt} />
+      <img className='h-full object-contain select-none cursor-move' style={{ transform: `translate(${offsetX}px, ${offsetY}px) scale(${imageSize})` }} src={src} alt={alt} onMouseDown={(event) => handleMouseDown(event)} onMouseUp={(event) => handleMouseUp(event)} />
     </>
   )
 }
