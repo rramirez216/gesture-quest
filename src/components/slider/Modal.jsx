@@ -9,14 +9,6 @@ function Modal({
   intervalTime,
   imageList,
 }) {
-  function convertToMilliseconds() {
-    const { radioNum, radioStr } = intervalTime
-    if (radioStr == 'min' || radioStr == 'mins') {
-      return radioNum * 60 * 1000
-    } else {
-      return radioNum * 1000
-    }
-  }
 
   let timeInMilliseconds = convertToMilliseconds()
 
@@ -40,6 +32,15 @@ function Modal({
     ) : (
       <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
     )
+
+  function convertToMilliseconds() {
+    const { radioNum, radioStr } = intervalTime
+    if (radioStr == 'min' || radioStr == 'mins') {
+      return radioNum * 60 * 1000
+    } else {
+      return radioNum * 1000
+    }
+  }
 
   const handlePause = () => {
     setPause(!pause)
