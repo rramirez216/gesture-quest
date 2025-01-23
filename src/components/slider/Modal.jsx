@@ -16,7 +16,7 @@ function Modal({
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
   const [imageSize, setImageSize] = React.useState(1)
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'hidden'
+  const isSliderOn = sliderDisplay === true ? 'flex flex-col absolute inset-0 bg-slate-100' : 'hidden flex-col absolute inset-0 bg-slate-100'
 
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
@@ -69,7 +69,7 @@ function Modal({
 
   return (
     <>
-      <div className={`${isSliderOn} flex-col absolute inset-0 bg-slate-100`} display={isSliderOn} onWheel={(event) => handleOnWheel(event)}>
+      <div className={isSliderOn} display={isSliderOn} onWheel={(event) => handleOnWheel(event)}>
         <ImageContainer imageList={imageList} imageIndex={imageIndex} imageSize={imageSize} />
         <ButtonWrapper
           handleClick={handleClick}
