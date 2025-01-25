@@ -21,7 +21,7 @@ function Button({ handleButton, buttonStr, buttonType = 'button' }) {
       icon = <X size={32} />;
       break;
     default:
-      icon = 'Start';
+      icon = buttonStr
   }
 
   let maxWidth = icon === 'Start' ? 'max-w-xs' : 'max-w-min'
