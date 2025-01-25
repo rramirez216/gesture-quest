@@ -2,14 +2,14 @@ import React from 'react'
 import TimerDisplay from './TimerDisplay'
 
 function Timer({
-  timeInMilliseconds,
   imageIndex,
-  setImageIndex,
   imageList,
   pause,
   milliseconds,
   setMilliseconds,
+  updateImageIndex,
 }) {
+
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
 
   const arrayLength = imageList.length - 1
@@ -19,10 +19,6 @@ function Timer({
       minutes: Math.floor((input % 3600000) / 60000),
       seconds: Math.floor((input % 60000) / 1000),
     }
-  }
-  function updateImageIndex() {
-    setImageIndex(imageIndex + 1)
-    setMilliseconds(timeInMilliseconds)
   }
 
   React.useEffect(() => {
@@ -38,7 +34,7 @@ function Timer({
         }
         if (!minutes && !seconds) {
           if (imageIndex < arrayLength) {
-            updateImageIndex()
+            updateImageIndex("+")
           } else {
             clearInterval(intervalID)
           }
