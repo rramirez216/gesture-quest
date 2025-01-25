@@ -45,7 +45,7 @@ function Home() {
     <section className='w-full h-full flex flex-col items-center justify-center md:px-8'>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime}>
         <FileInput handleImage={handleImage} />
-        <Button handleButton={handleSliderDisplay} buttonType={'submit'} />
+        <Button handleButton={handleSliderDisplay} buttonStr={'Start'} buttonType={'submit'} />
       </Form>
       {sliderDisplay && (
         <Modal
