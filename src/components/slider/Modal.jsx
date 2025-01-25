@@ -2,6 +2,7 @@ import React from 'react'
 import Timer from './Timer'
 import ImageContainer from './ImageContainer'
 import ButtonWrapper from './ButtonWrapper'
+import EndOfSession from './EndOfSession'
 
 function Modal({
   sliderDisplay,
@@ -21,16 +22,15 @@ function Modal({
   let timer =
     imageList.length > 0 && sliderDisplay == true ? (
       <Timer
-        timeInMilliseconds={timeInMilliseconds}
         imageIndex={imageIndex}
-        setImageIndex={setImageIndex}
         imageList={imageList}
         pause={pause}
         milliseconds={milliseconds}
         setMilliseconds={setMilliseconds}
+        updateImageIndex={updateImageIndex}
       />
     ) : (
-      <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
+      <Timer imageList={imageList} />
     )
 
   function convertToMilliseconds() {
@@ -42,19 +42,27 @@ function Modal({
     }
   }
 
+  function updateImageIndex(operator) {
+    if (operator === "-") {
+      setImageIndex(imageIndex - 1)
+    } else if (operator === "+") {
+      setImageIndex(imageIndex + 1)
+    } else {
+      setImageIndex(imageIndex - imageIndex)
+    }
+    setMilliseconds(timeInMilliseconds)
+    setImageSize(1)
+  }
+
   const handlePause = () => {
     setPause(!pause)
   }
 
   const handleClick = (str) => {
     if (str === 'Next' && imageIndex < imageList.length - 1) {
-      setImageIndex(imageIndex + 1)
-      setMilliseconds(timeInMilliseconds)
-      setImageSize(1)
+      updateImageIndex("+")
     } else if (str === 'Prev' && imageIndex > 0) {
-      setImageIndex(imageIndex - 1)
-      setMilliseconds(timeInMilliseconds)
-      setImageSize(1)
+      updateImageIndex("-")
     }
   }
 
@@ -84,6 +92,7 @@ function Modal({
       <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 text-2xl rounded-b-lg'>
         {timer}
       </p>
+      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} />
     </>
   )
 }
