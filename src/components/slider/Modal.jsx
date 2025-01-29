@@ -17,6 +17,7 @@ function Modal({
   const [pause, setPause] = React.useState(false)
   const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
   const [imageSize, setImageSize] = React.useState(1)
+  const [sessionEnd, setSessionEnd] = React.useState(false)
   const isSliderOn = sliderDisplay === true ? 'flex flex-col absolute inset-0 bg-slate-100' : 'hidden flex-col absolute inset-0 bg-slate-100'
 
   let timer =
@@ -28,6 +29,7 @@ function Modal({
         milliseconds={milliseconds}
         setMilliseconds={setMilliseconds}
         updateImageIndex={updateImageIndex}
+        setSessionEnd={setSessionEnd}
       />
     ) : (
       <Timer imageList={imageList} />
@@ -92,7 +94,7 @@ function Modal({
       <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 text-2xl rounded-b-lg'>
         {timer}
       </p>
-      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} />
+      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} sessionEnd={sessionEnd} milliseconds={milliseconds} />
     </>
   )
 }
