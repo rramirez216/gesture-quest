@@ -8,6 +8,7 @@ function Timer({
   milliseconds,
   setMilliseconds,
   updateImageIndex,
+  setSessionEnd,
 }) {
 
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
@@ -37,6 +38,7 @@ function Timer({
             updateImageIndex("+")
           } else {
             clearInterval(intervalID)
+            setSessionEnd(true)
           }
         }
       }, 1000)
