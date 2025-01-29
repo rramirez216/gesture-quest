@@ -2,6 +2,7 @@ import React from 'react'
 import Timer from './Timer'
 import ImageContainer from './ImageContainer'
 import ButtonWrapper from './ButtonWrapper'
+import EndOfSession from './EndOfSession'
 
 function Modal({
   sliderDisplay,
@@ -9,6 +10,31 @@ function Modal({
   intervalTime,
   imageList,
 }) {
+
+  let timeInMilliseconds = convertToMilliseconds()
+
+  const [imageIndex, setImageIndex] = React.useState(0)
+  const [pause, setPause] = React.useState(false)
+  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
+  const [imageSize, setImageSize] = React.useState(1)
+  const [sessionEnd, setSessionEnd] = React.useState(false)
+  const isSliderOn = sliderDisplay === true ? 'flex flex-col absolute inset-0 bg-slate-100' : 'hidden flex-col absolute inset-0 bg-slate-100'
+
+  let timer =
+    imageList.length > 0 && sliderDisplay == true ? (
+      <Timer
+        imageIndex={imageIndex}
+        imageList={imageList}
+        pause={pause}
+        milliseconds={milliseconds}
+        setMilliseconds={setMilliseconds}
+        updateImageIndex={updateImageIndex}
+        setSessionEnd={setSessionEnd}
+      />
+    ) : (
+      <Timer imageList={imageList} />
+    )
+
   function convertToMilliseconds() {
     const { radioNum, radioStr } = intervalTime
     if (radioStr == 'min' || radioStr == 'mins') {
@@ -18,28 +44,17 @@ function Modal({
     }
   }
 
-  let timeInMilliseconds = convertToMilliseconds()
-
-  const [imageIndex, setImageIndex] = React.useState(0)
-  const [pause, setPause] = React.useState(false)
-  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
-  const [imageSize, setImageSize] = React.useState(1)
-  const isSliderOn = sliderDisplay === true ? 'flex' : 'hidden'
-
-  let timer =
-    imageList.length > 0 && sliderDisplay == true ? (
-      <Timer
-        timeInMilliseconds={timeInMilliseconds}
-        imageIndex={imageIndex}
-        setImageIndex={setImageIndex}
-        imageList={imageList}
-        pause={pause}
-        milliseconds={milliseconds}
-        setMilliseconds={setMilliseconds}
-      />
-    ) : (
-      <Timer timeInMilliseconds={timeInMilliseconds} imageList={imageList} />
-    )
+  function updateImageIndex(operator) {
+    if (operator === "-") {
+      setImageIndex(imageIndex - 1)
+    } else if (operator === "+") {
+      setImageIndex(imageIndex + 1)
+    } else {
+      setImageIndex(imageIndex - imageIndex)
+    }
+    setMilliseconds(timeInMilliseconds)
+    setImageSize(1)
+  }
 
   const handlePause = () => {
     setPause(!pause)
@@ -47,13 +62,9 @@ function Modal({
 
   const handleClick = (str) => {
     if (str === 'Next' && imageIndex < imageList.length - 1) {
-      setImageIndex(imageIndex + 1)
-      setMilliseconds(timeInMilliseconds)
-      setImageSize(1)
+      updateImageIndex("+")
     } else if (str === 'Prev' && imageIndex > 0) {
-      setImageIndex(imageIndex - 1)
-      setMilliseconds(timeInMilliseconds)
-      setImageSize(1)
+      updateImageIndex("-")
     }
   }
 
@@ -68,7 +79,7 @@ function Modal({
 
   return (
     <>
-      <div className={`${isSliderOn} flex-col absolute inset-0 bg-slate-100`} display={isSliderOn} onWheel={(event) => handleOnWheel(event)}>
+      <div className={isSliderOn} display={isSliderOn} onWheel={(event) => handleOnWheel(event)}>
         <ImageContainer imageList={imageList} imageIndex={imageIndex} imageSize={imageSize} />
         <ButtonWrapper
           handleClick={handleClick}
@@ -83,6 +94,7 @@ function Modal({
       <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 text-2xl rounded-b-lg'>
         {timer}
       </p>
+      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} sessionEnd={sessionEnd} milliseconds={milliseconds} />
     </>
   )
 }

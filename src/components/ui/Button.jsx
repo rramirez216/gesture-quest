@@ -3,6 +3,7 @@ import { Pause, SkipBack, SkipForward, Play, X } from 'react-feather'
 
 function Button({ handleButton, buttonStr, buttonType = 'button' }) {
   let icon
+  let maxWidth = 'max-w-min'
 
   switch (buttonStr) {
     case 'Next':
@@ -21,10 +22,9 @@ function Button({ handleButton, buttonStr, buttonType = 'button' }) {
       icon = <X size={32} />;
       break;
     default:
-      icon = 'Start';
+      icon = buttonStr
+      maxWidth = 'max-w-xs'
   }
-
-  let maxWidth = icon === 'Start' ? 'max-w-xs' : 'max-w-min'
 
   return (
     <>
