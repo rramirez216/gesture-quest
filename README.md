@@ -1,1 +1,1 @@
-hello world
+A tool to improve your artistic skills. Practice quick, timed figure drawing exercises to enhance your understanding of movement, anatomy, and proportion. Perfect for artists of all levels seeking to boost creativity and technique.
