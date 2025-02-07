@@ -2,11 +2,12 @@ import React from 'react'
 import Radio from './Radio'
 import { constants } from '../../data/constants'
 
-function Form({ intervalTime, setIntervalTime, children }) {
+function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
   let { radioData } = constants
+  let formStyles = sliderDisplay ? 'bg-slate-200 w-full h-full md:h-min hidden flex-col items-center justify-center gap-8 md:gap-12 max-w-xl py-12 text-2xl' : 'bg-slate-200 w-full h-full md:h-min flex flex-col items-center justify-center gap-8 md:gap-12 max-w-xl py-12 text-2xl'
   return (
     <form
-      className='bg-slate-200 w-full h-full md:h-min flex flex-col items-center justify-center gap-8 md:gap-12 max-w-xl py-12 text-2xl'
+      className={formStyles}
       onSubmit={(e) => e.preventDefault()}
     >
       {children[0]}

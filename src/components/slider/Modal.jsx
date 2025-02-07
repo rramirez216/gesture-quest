@@ -51,6 +51,7 @@ function Modal({
       setImageIndex(imageIndex + 1)
     } else {
       setImageIndex(imageIndex - imageIndex)
+      setSessionEnd(false)
     }
     setMilliseconds(timeInMilliseconds)
     setImageSize(1)
@@ -89,12 +90,13 @@ function Modal({
           pause={pause}
           imageList={imageList}
           imageIndex={imageIndex}
+          sessionEnd={sessionEnd}
         />
       </div>
       <p className='w-24 text-center text-slate-800 bg-emerald-400 absolute top-0 text-2xl rounded-b-lg'>
         {timer}
       </p>
-      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} sessionEnd={sessionEnd} milliseconds={milliseconds} />
+      <EndOfSession handleSliderDisplay={handleSliderDisplay} imageIndex={imageIndex} updateImageIndex={updateImageIndex} sessionEnd={sessionEnd} />
     </>
   )
 }

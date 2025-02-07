@@ -42,8 +42,8 @@ function Home() {
   }, [imageList])
 
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center md:px-8'>
-      <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime}>
+    <main className='w-full h-full flex flex-col items-center justify-center md:px-8'>
+      <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} sliderDisplay={sliderDisplay}>
         <FileInput handleImage={handleImage} />
         <Button handleButton={handleSliderDisplay} buttonStr={'Start'} buttonType={'submit'} />
       </Form>
@@ -55,7 +55,7 @@ function Home() {
           imageList={imageList}
         />
       )}
-    </section>
+    </main>
   )
 }
 
