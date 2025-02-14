@@ -29,6 +29,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
         </div>
       </fieldset>
       {children[1]}
+      {children[2]}
     </form>
   )
 }
