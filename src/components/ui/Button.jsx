@@ -2,7 +2,7 @@ import React from 'react'
 import { Pause, SkipBack, SkipForward, Play, X } from 'react-feather'
 
 function Button({ handleButton, buttonStr, buttonType = 'button' }) {
-  const listOfActionStrings = ['Next', 'Prev', '-', '+']
+  const listOfActionStrings = ['Next', 'Prev', '+sec', '-sec', '+min', '-min']
   let maxWidth = 'max-w-min'
   let icon
 
@@ -22,6 +22,18 @@ function Button({ handleButton, buttonStr, buttonType = 'button' }) {
     case 'End Session':
       icon = <X size={32} />;
       break;
+    case '+sec':
+      icon = '+'
+      break
+    case '-sec':
+      icon = '-'
+      break
+    case '+min':
+      icon = '+'
+      break
+    case '-min':
+      icon = '-'
+      break
     default:
       icon = buttonStr
       maxWidth = 'max-w-xs'
