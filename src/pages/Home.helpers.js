@@ -12,4 +12,15 @@ function shuffleArray(arr) {
   }
   return newArr;
 }
-export default shuffleArray;
+
+function roundToNearestTen(str, num) {
+  let firstChar = str[0];
+  if (firstChar == "-") {
+    return Math.floor(num / 10) * 10;
+  }
+  if (firstChar == "+") {
+    return Math.ceil(num / 10) * 10;
+  }
+}
+
+export { shuffleArray, roundToNearestTen };
