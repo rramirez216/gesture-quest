@@ -1,13 +1,11 @@
 import React from 'react'
 import Button from '../ui/Button'
 
-function CustomTimer({ intervalTime: { radioNum }, handleCustomTimeButton }) {
+function CustomTimer({ time, handleOnChange, setCustomTime, handleCustomTimeButton, minus, plus }) {
   return (<div className='flex'>
-    <Button buttonStr={'-'} handleButton={handleCustomTimeButton} />
-    <input type='number' min={0} max={60} />
-    <p className='text-2xl'>:</p>
-    <input type='number' min={0} max={59} />
-    <Button buttonStr={'+'} handleButton={handleCustomTimeButton} />
+    <Button buttonStr={minus} handleButton={handleCustomTimeButton} />
+    <input type='number' min={0} max={59} value={time} onChange={handleOnChange} />
+    <Button buttonStr={plus} handleButton={handleCustomTimeButton} />
   </div>)
 }
 
