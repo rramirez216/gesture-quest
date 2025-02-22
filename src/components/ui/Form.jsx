@@ -30,6 +30,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
       </fieldset>
       {children[1]}
       {children[2]}
+      {children[3]}
     </form>
   )
 }
