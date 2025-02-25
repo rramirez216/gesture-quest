@@ -83,6 +83,7 @@ function Home() {
   }
 
   const handleOnChange = (event) => {
+    console.log('change')
     let strToNum = Number(event.target.value)
 
     if (event.target.value < 0) {
@@ -112,8 +113,10 @@ function Home() {
     <main className='w-full h-full flex flex-col items-center justify-center md:px-8'>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} sliderDisplay={sliderDisplay}>
         <FileInput handleImage={handleImage} />
-        <CustomTimer time={customTime.minutes} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-min'} plus={'+min'} />
-        <CustomTimer time={customTime.seconds} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-sec'} plus={'+sec'} />
+        <div className='w-full max-w-xs flex gap-2'>
+          <CustomTimer time={customTime.minutes} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-min'} plus={'+min'} labelText={'Min'} />
+          <CustomTimer time={customTime.seconds} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-sec'} plus={'+sec'} labelText={'Sec'} />
+        </div>
         <Button handleButton={handleSliderDisplay} buttonStr={'Start'} buttonType={'submit'} />
       </Form>
       {sliderDisplay && (
