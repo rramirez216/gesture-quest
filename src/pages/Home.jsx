@@ -86,7 +86,6 @@ function Home() {
   }
 
   const handleOnChange = (event) => {
-    console.log('change')
     let strToNum = Number(event.target.value)
 
     if (event.target.value < 0) {
