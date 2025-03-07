@@ -12,15 +12,14 @@ function shuffleArray(arr) {
   }
   return newArr;
 }
-
-function roundToNearestTen(str, num) {
+function nextMultipleOfFive(str, num) {
   let firstChar = str[0];
   if (firstChar == "-") {
-    return Math.floor(num / 10) * 10;
+    return Math.floor(num / 5) * 5;
   }
   if (firstChar == "+") {
-    return Math.ceil(num / 10) * 10;
+    return Math.ceil(num / 5) * 5;
   }
 }
 
-export { shuffleArray, roundToNearestTen };
+export { shuffleArray, nextMultipleOfFive };
