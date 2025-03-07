@@ -4,7 +4,7 @@ import Form from '../components/ui/Form'
 import Button from '../components/ui/Button'
 import Modal from '../components/slider/Modal'
 import CustomTimer from '../components/custom-timer-button/CustomTimer'
-import { shuffleArray, roundToNearestTen } from './Home.helpers.js'
+import { shuffleArray, nextMultipleOfFive } from './Home.helpers.js'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
@@ -44,7 +44,7 @@ function Home() {
       return
     }
     if (str === '+sec' && seconds % 5 !== 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: roundToNearestTen(str, seconds) }))
+      setCustomTime((prev) => ({ ...prev, seconds: nextMultipleOfFive(str, seconds) }))
       return
     }
     if (str === '+sec') {
@@ -60,7 +60,7 @@ function Home() {
       return
     }
     if (str === '-sec' && seconds % 5 !== 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: roundToNearestTen(str, seconds) }))
+      setCustomTime((prev) => ({ ...prev, seconds: nextMultipleOfFive(str, seconds) }))
       return
     }
     if (str === '-sec') {
