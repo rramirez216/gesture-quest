@@ -37,8 +37,16 @@ function Home() {
   const handleCustomTimeButton = (str) => {
     setCustomTime((prev) => {
 
+      const { minutes, seconds } = prev
+
+      const secondsOrMinutes = {
+        '+sec': Math.min(59, seconds % 5 !== 0 ? nextMultipleOfFive(str, seconds) : seconds + 5),
+        '-sec': Math.max(0,),
+        '+min': Math.min(59,),
+        '-min': Math.max(0,),
+      }
     })
-    const { minutes, seconds } = customTime
+
     if (str === '+sec' && (seconds == 59 || seconds >= 55)) {
       setCustomTime((prev) => ({ ...prev, seconds: 59 }))
       return
