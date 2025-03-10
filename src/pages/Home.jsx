@@ -36,76 +36,27 @@ function Home() {
 
   const handleCustomTimeButton = (str) => {
     setCustomTime((prev) => {
-
       const { minutes, seconds } = prev
-
       const secondsOrMinutes = {
         '+sec': Math.min(59, seconds % 5 !== 0 ? nextMultipleOfFive(str, seconds) : seconds + 5),
-        '-sec': Math.max(0,),
-        '+min': Math.min(59,),
-        '-min': Math.max(0,),
+        '-sec': Math.max(0, seconds % 5 !== 0 ? nextMultipleOfFive(str, seconds) : seconds - 5),
+        '+min': Math.min(59, minutes + 1),
+        '-min': Math.max(0, minutes - 1),
       }
+      return str.includes("sec") ? { ...prev, seconds: secondsOrMinutes[str] } : { ...prev, minutes: secondsOrMinutes[str] }
     })
-
-    if (str === '+sec' && (seconds == 59 || seconds >= 55)) {
-      setCustomTime((prev) => ({ ...prev, seconds: 59 }))
-      return
-    }
-    if (str === '+sec' && seconds % 5 !== 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: nextMultipleOfFive(str, seconds) }))
-      return
-    }
-    if (str === '+sec') {
-      setCustomTime((prev) => ({ ...prev, seconds: prev.seconds + 5 }))
-      return
-    }
-    if (str === '-sec' && seconds > 55) {
-      setCustomTime((prev) => ({ ...prev, seconds: 55 }))
-      return
-    }
-    if (str === '-sec' && seconds - 5 < 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: 0 }))
-      return
-    }
-    if (str === '-sec' && seconds % 5 !== 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: nextMultipleOfFive(str, seconds) }))
-      return
-    }
-    if (str === '-sec') {
-      setCustomTime((prev) => ({ ...prev, seconds: prev.seconds - 5 }))
-      return
-    }
-    if (str === '+min' && (minutes == 59)) {
-      setCustomTime((prev) => ({ ...prev, minutes: 59 }))
-      return
-    }
-    if (str === '+min') {
-      setCustomTime((prev) => ({ ...prev, minutes: prev.minutes + 1 }))
-      return
-    }
-    if (str === '-min' && minutes == 0) {
-      setCustomTime((prev) => ({ ...prev, minutes: 0 }))
-      return
-    }
-    if (str === '-min') {
-      setCustomTime((prev) => ({ ...prev, minutes: prev.minutes - 1 }))
-      return
-    }
   }
 
   const handleOnChange = (event) => {
     let strToNum = Number(event.target.value)
-
     if (event.target.value < 0) {
       setCustomTime((prev) => ({ ...prev, seconds: 0 }))
       return
     }
-
     if (event.target.value > 59) {
       setCustomTime((prev) => ({ ...prev, seconds: 59 }))
       return
     }
-
     setCustomTime((prev) => ({ ...prev, seconds: strToNum }))
   }
 
