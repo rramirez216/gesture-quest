@@ -7,7 +7,7 @@ function CustomTimer({ time, handleOnChange, handleCustomTimeButton, minus, plus
       <label className='text-slate-600' htmlFor="number-input">{labelText}</label>
       <div className='flex w-full'>
         <Button buttonStr={minus} handleButton={handleCustomTimeButton} />
-        <input className='w-full h-full text-center' type='number' min={0} max={59} value={time} onChange={handleOnChange} id='number-input' />
+        <input className='w-full h-full text-center' type='number' min={0} max={59} value={time} onChange={(event) => handleOnChange(event.target.value, labelText)} id='number-input' />
         <Button buttonStr={plus} handleButton={handleCustomTimeButton} />
       </div>
     </div>
