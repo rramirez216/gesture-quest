@@ -22,4 +22,9 @@ function nextMultipleOfFive(str, num) {
   }
 }
 
-export { shuffleArray, nextMultipleOfFive };
+function boundaryHandler(lowest, highest, num) {
+  let upperLimit = Math.min(highest, num);
+  return Math.max(lowest, upperLimit);
+}
+
+export { shuffleArray, nextMultipleOfFive, boundaryHandler };
