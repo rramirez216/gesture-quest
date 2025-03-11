@@ -4,7 +4,7 @@ import Form from '../components/ui/Form'
 import Button from '../components/ui/Button'
 import Modal from '../components/slider/Modal'
 import CustomTimer from '../components/custom-timer-button/CustomTimer'
-import { shuffleArray, nextMultipleOfFive } from './Home.helpers.js'
+import { shuffleArray, nextMultipleOfFive, boundaryHandler } from './Home.helpers.js'
 
 function Home() {
   const [imageList, setImageList] = React.useState([])
@@ -17,14 +17,11 @@ function Home() {
 
   const handleImage = (event) => {
     let arr = []
-
     for (const obj of event.target.files) {
       let url = URL.createObjectURL(obj)
       arr = [...arr, url]
     }
-
     setImageList(shuffleArray(arr))
-
     console.log(arr)
   }
 
@@ -47,19 +44,12 @@ function Home() {
     })
   }
 
-  const handleOnChange = (event) => {
-    let strToNum = Number(event.target.value)
-    if (event.target.value < 0) {
-      setCustomTime((prev) => ({ ...prev, seconds: 0 }))
-      return
-    }
-    if (event.target.value > 59) {
-      setCustomTime((prev) => ({ ...prev, seconds: 59 }))
-      return
-    }
-    setCustomTime((prev) => ({ ...prev, seconds: strToNum }))
+  const handleOnChange = (event, str) => {
+    let input = boundaryHandler(0, 59, Number(event))
+    setCustomTime((prev) => {
+      return str.includes("Sec") ? { ...prev, seconds: input } : { ...prev, minutes: input }
+    })
   }
-
 
   React.useEffect(() => {
     return () => {
