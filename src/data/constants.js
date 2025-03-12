@@ -6,6 +6,7 @@ const constants = {
     { id: 3, radioStr: "mins", radioNum: 2, labelID: "interval-2-min" },
     { id: 4, radioStr: "min", radioNum: 1, labelID: "interval-1-min" },
     { id: 5, radioStr: "secs", radioNum: 30, labelID: "interval-30-sec" },
+    { id: 5, radioStr: "custom", radioNum: 30, labelID: "interval-30-sec" },
   ],
 };
 
