@@ -10,12 +10,10 @@ function Modal({
   intervalTime,
   imageList,
 }) {
-
-  let timeInMilliseconds = convertToMilliseconds()
-
+  console.log(intervalTime, ': in the modal')
   const [imageIndex, setImageIndex] = React.useState(0)
   const [pause, setPause] = React.useState(false)
-  const [milliseconds, setMilliseconds] = React.useState(timeInMilliseconds)
+  const [milliseconds, setMilliseconds] = React.useState(intervalTime)
   const [imageSize, setImageSize] = React.useState(1)
   const [sessionEnd, setSessionEnd] = React.useState(false)
   const isSliderOn = sliderDisplay === true ? 'flex flex-col absolute inset-0 bg-slate-100' : 'hidden flex-col absolute inset-0 bg-slate-100'
@@ -35,15 +33,6 @@ function Modal({
       <Timer imageList={imageList} />
     )
 
-  function convertToMilliseconds() {
-    const { radioNum, radioStr } = intervalTime
-    if (radioStr == 'min' || radioStr == 'mins') {
-      return radioNum * 60 * 1000
-    } else {
-      return radioNum * 1000
-    }
-  }
-
   function updateImageIndex(operator) {
     if (operator === "-") {
       setImageIndex(imageIndex - 1)
@@ -53,7 +42,7 @@ function Modal({
       setImageIndex(imageIndex - imageIndex)
       setSessionEnd(false)
     }
-    setMilliseconds(timeInMilliseconds)
+    setMilliseconds(intervalTime)
     setImageSize(1)
   }
 
