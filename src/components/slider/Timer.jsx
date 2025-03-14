@@ -10,9 +10,7 @@ function Timer({
   updateImageIndex,
   setSessionEnd,
 }) {
-
   const [time, setTime] = React.useState({ minutes: 0, seconds: 0 })
-
   const arrayLength = imageList.length - 1
 
   function calculateCurrentTime(input) {
