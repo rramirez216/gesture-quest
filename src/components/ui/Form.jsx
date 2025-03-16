@@ -20,7 +20,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
             <Radio
               key={item.id}
               radioStr={item.radioStr}
-              radioNum={item.radioNum}
+              radioValue={item.radioValue}
               labelID={item.labelID}
               intervalTime={intervalTime}
               setIntervalTime={setIntervalTime}
