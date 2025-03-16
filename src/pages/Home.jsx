@@ -9,11 +9,34 @@ import { shuffleArray, nextMultipleOfFive, boundaryHandler } from './Home.helper
 function Home() {
   const [imageList, setImageList] = React.useState([])
   const [intervalTime, setIntervalTime] = React.useState({
-    radioNum: 30,
+    radioValue: 30,
     radioStr: 'secs',
   })
   const [sliderDisplay, setSliderDisplay] = React.useState(false)
   const [customTime, setCustomTime] = React.useState({ minutes: 0, seconds: 0 })
+
+  function convertToMilliseconds() {
+    const { radioValue, radioStr } = intervalTime
+    if (radioStr == 'min' || radioStr == 'mins') {
+      return radioValue * 60 * 1000
+    } else {
+      return radioValue * 1000
+    }
+  }
+
+  function setIntervalTimeToCustomOrSelectedRadioValue() {
+    const { minutes, seconds } = customTime
+    let newIntervalTime = (minutes * 60000) + (seconds * 1000)
+    console.log(newIntervalTime)
+    setIntervalTime((prev) => {
+      if (minutes > 0 || seconds > 0) {
+
+        return { ...prev, radioValue: newIntervalTime }
+      } else {
+        return { ...prev, radioValue: convertToMilliseconds() }
+      }
+    })
+  }
 
   const handleImage = (event) => {
     let arr = []
@@ -28,6 +51,7 @@ function Home() {
   const handleSliderDisplay = () => {
     if (imageList.length > 0) {
       setSliderDisplay(!sliderDisplay)
+      setIntervalTimeToCustomOrSelectedRadioValue()
     }
   }
 
@@ -74,7 +98,7 @@ function Home() {
         <Modal
           sliderDisplay={sliderDisplay}
           handleSliderDisplay={handleSliderDisplay}
-          intervalTime={intervalTime}
+          intervalTime={intervalTime.radioValue}
           imageList={imageList}
         />
       )}
