@@ -8,7 +8,7 @@ function Radio({
   setIntervalTime,
 }) {
   let checked = intervalTime.radioValue == val ? 'bg-emerald-400' : 'bg-slate-300'
-  //let isRadioValueCustomOrNumber = 
+  let isRadioValueCustomOrNumber;
   return (
     <label className={`block   text-slate-800 cursor-pointer relative select-none hover:scale-105`} >
       <input
