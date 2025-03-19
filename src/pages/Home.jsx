@@ -14,6 +14,8 @@ function Home() {
   })
   const [sliderDisplay, setSliderDisplay] = React.useState(false)
   const [customTime, setCustomTime] = React.useState({ minutes: 0, seconds: 0 })
+  //const [displayCustomTime, setDisplayCustomTime] = React.useState(false)
+  const isRadioValueCustom = intervalTime.radioStr === 'custom' ? 'w-full max-w-xs flex gap-2 block -mt-8' : 'w-full max-w-xs flex gap-2 hidden'
 
   function convertToMilliseconds() {
     const { radioValue, radioStr } = intervalTime
@@ -88,7 +90,7 @@ function Home() {
     <main className='w-full h-full flex flex-col items-center justify-center md:px-8'>
       <Form intervalTime={intervalTime} setIntervalTime={setIntervalTime} sliderDisplay={sliderDisplay}>
         <FileInput handleImage={handleImage} />
-        <div className='w-full max-w-xs flex gap-2'>
+        <div className={isRadioValueCustom}>
           <CustomTimer time={customTime.minutes} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-min'} plus={'+min'} labelText={'Min'} />
           <CustomTimer time={customTime.seconds} handleOnChange={handleOnChange} setCustomTime={setCustomTime} handleCustomTimeButton={handleCustomTimeButton} minus={'-sec'} plus={'+sec'} labelText={'Sec'} />
         </div>
