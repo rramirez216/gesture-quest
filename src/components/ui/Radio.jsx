@@ -10,7 +10,7 @@ function Radio({
   let checked = intervalTime.radioValue == val ? 'bg-emerald-400' : 'bg-slate-300'
   let isRadioValueCustomOrNumber = radioStr == 'custom' ? 'custom' : val + ' ' + radioStr
   return (
-    <label className={`block   text-slate-800 cursor-pointer relative select-none hover:scale-105`} >
+    <label className={`block text-slate-800 cursor-pointer relative select-none hover:scale-105`} >
       <input
         className='absolute h-[1em] w-[1em] peer opacity-0'
         type='radio'
