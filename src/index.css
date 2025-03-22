@@ -6,11 +6,22 @@ body,
   height: 100%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
+
   .triangle {
     clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
   }

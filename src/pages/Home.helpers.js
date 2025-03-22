@@ -12,4 +12,19 @@ function shuffleArray(arr) {
   }
   return newArr;
 }
-export default shuffleArray;
+function nextMultipleOfFive(str, num) {
+  let firstChar = str[0];
+  if (firstChar == "-") {
+    return Math.floor(num / 5) * 5;
+  }
+  if (firstChar == "+") {
+    return Math.ceil(num / 5) * 5;
+  }
+}
+
+function boundaryHandler(lowest, highest, num) {
+  let upperLimit = Math.min(highest, num);
+  return Math.max(lowest, upperLimit);
+}
+
+export { shuffleArray, nextMultipleOfFive, boundaryHandler };

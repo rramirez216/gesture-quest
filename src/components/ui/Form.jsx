@@ -11,7 +11,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
       onSubmit={(e) => e.preventDefault()}
     >
       {children[0]}
-      <fieldset className=' w-full max-w-xs'>
+      <fieldset className='w-full max-w-xs'>
         <legend className='text-slate-600 pb-2 text-left'>
           Select Time Per Image
         </legend>
@@ -20,7 +20,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
             <Radio
               key={item.id}
               radioStr={item.radioStr}
-              radioNum={item.radioNum}
+              radioValue={item.radioValue}
               labelID={item.labelID}
               intervalTime={intervalTime}
               setIntervalTime={setIntervalTime}
@@ -29,6 +29,7 @@ function Form({ intervalTime, setIntervalTime, children, sliderDisplay }) {
         </div>
       </fieldset>
       {children[1]}
+      {children[2]}
     </form>
   )
 }
