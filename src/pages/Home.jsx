@@ -14,7 +14,6 @@ function Home() {
   })
   const [sliderDisplay, setSliderDisplay] = React.useState(false)
   const [customTime, setCustomTime] = React.useState({ minutes: 0, seconds: 0 })
-  //const [displayCustomTime, setDisplayCustomTime] = React.useState(false)
   const isRadioValueCustom = intervalTime.radioStr === 'custom' ? 'w-full max-w-xs flex gap-2 block -mt-8' : 'w-full max-w-xs flex gap-2 hidden'
 
   function convertToMilliseconds() {
