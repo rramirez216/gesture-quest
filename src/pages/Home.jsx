@@ -37,7 +37,7 @@ function Home() {
     })
   }
 
-  const handleImage = (event) => {
+  function handleImage(event) {
     let arr = []
     for (const obj of event.target.files) {
       let url = URL.createObjectURL(obj)
@@ -47,7 +47,7 @@ function Home() {
     console.log(arr)
   }
 
-  const handleSliderDisplay = () => {
+  function handleSliderDisplay() {
     if (sliderDisplay == true) {
       setSliderDisplay(!sliderDisplay)
       setCustomTime({ minutes: 0, seconds: 0 })
@@ -64,7 +64,7 @@ function Home() {
     }
   }
 
-  const handleCustomTimeButton = (str) => {
+  function handleCustomTimeButton(str) {
     setCustomTime((prev) => {
       const { minutes, seconds } = prev
       const secondsOrMinutes = {
@@ -77,7 +77,7 @@ function Home() {
     })
   }
 
-  const handleOnChange = (event, str) => {
+  function handleOnChange(event, str) {
     let input = boundaryHandler(0, 59, Number(event))
     setCustomTime((prev) => {
       return str.includes("Sec") ? { ...prev, seconds: input } : { ...prev, minutes: input }
