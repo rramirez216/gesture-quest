@@ -28,10 +28,8 @@ function Home() {
   function setIntervalTimeToCustomOrSelectedRadioValue() {
     const { minutes, seconds } = customTime
     let newIntervalTime = (minutes * 60000) + (seconds * 1000)
-    console.log(newIntervalTime)
     setIntervalTime((prev) => {
       if (minutes > 0 || seconds > 0) {
-
         return { ...prev, radioValue: newIntervalTime }
       } else {
         return { ...prev, radioValue: convertToMilliseconds() }
@@ -50,9 +48,19 @@ function Home() {
   }
 
   const handleSliderDisplay = () => {
+    if (sliderDisplay == true) {
+      setSliderDisplay(!sliderDisplay)
+      setCustomTime({ minutes: 0, seconds: 0 })
+      setIntervalTime({
+        radioValue: 30,
+        radioStr: 'secs',
+      })
+      return
+    }
     if (imageList.length > 0) {
       setSliderDisplay(!sliderDisplay)
       setIntervalTimeToCustomOrSelectedRadioValue()
+      return
     }
   }
 
