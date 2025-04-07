@@ -19,7 +19,3 @@ export default {
   },
   plugins: [],
 };
-/* 8CD99C
- * D2EfD8 - old
- * d4e4be - old hover
- * */
